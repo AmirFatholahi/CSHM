@@ -6,7 +6,7 @@ using CSHM.Widget.Redis;
 namespace CSHM.Core.Handlers;
  
 public class DataRepositoryHandler : IDataRepositoryHandler
-{
+{  
     private static readonly Dictionary<string, IDataRepository> Data = new Dictionary<string, IDataRepository>();
     //private readonly Dictionary<string, POTransactionBatchViewModel> _batches = new Dictionary<string, POTransactionBatchViewModel>();
     //private readonly Dictionary<string, POTransactionViewModel> _transactions = new Dictionary<string, POTransactionViewModel>();
