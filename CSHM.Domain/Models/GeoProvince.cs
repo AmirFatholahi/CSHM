@@ -1,0 +1,34 @@
+﻿using CSHM.Domain.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSHM.Domain
+{
+    public class GeoProvince:IEntity
+    {
+        public GeoProvince() { }
+
+        public int ID { get; set; }
+
+        public string ProvinceName { get; set; }
+
+        public string ProvinceCode { get; set; }
+
+        public bool IsActive { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public int CreatorID { get; set; }
+
+        public DateTime CreationDateTime { get; set; }
+
+        public int? ModifierID { get; set; }
+
+        public DateTime? ModificationDateTime { get; set; }
+
+        public virtual ICollection<GeoCity> GeoCities { get; set; }
+    }
+}

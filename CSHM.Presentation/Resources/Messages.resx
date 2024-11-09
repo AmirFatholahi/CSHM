@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessDenied" xml:space="preserve">
+    <value>دسترسی شما محدود شده است</value>
+  </data>
+  <data name="APIExecuted" xml:space="preserve">
+    <value>رابط کاربری با موفقیت متصل شد</value>
+  </data>
+  <data name="APIFailed" xml:space="preserve">
+    <value>اتصال رابط کاربری با شکست مواجه شد</value>
+  </data>
+  <data name="ChargeBatchSuccessed" xml:space="preserve">
+    <value>شارژ تجمعی {0} تعداد از {1} ردیف کل با موفقیت انجام شد</value>
+  </data>
+  <data name="CreationNewUserForbidden" xml:space="preserve">
+    <value>ثبت نام غیرحضوری توسط ادمین سامانه بسته شده است</value>
+  </data>
+  <data name="DataTransferCompletedSuccessfully" xml:space="preserve">
+    <value>انتقال اطلاعات بطور کامل انجام شد</value>
+  </data>
+  <data name="Deactivation" xml:space="preserve">
+    <value>غیر فعالسازی با موفقیت انجام شد</value>
+  </data>
+  <data name="ErrorInCaptcha" xml:space="preserve">
+    <value>عبارت امنیتی نا معتبر است</value>
+  </data>
+  <data name="ExceptionInRepositoryError605" xml:space="preserve">
+    <value>استثنای درونی در لایه مخزن بوجود آمده است</value>
+  </data>
+  <data name="FieldExactLengthNotMatch" xml:space="preserve">
+    <value>فیلد {0} باید {1} کاراکتر باشد</value>
+  </data>
+  <data name="FieldIsRequired" xml:space="preserve">
+    <value>تکمیل فیلد {0} الزامی است</value>
+  </data>
+  <data name="FieldMaxLengthExceeded" xml:space="preserve">
+    <value>طول فیلد {0} نمی تواند از {1} کاراکتر بیشتر باشد</value>
+  </data>
+  <data name="FiledIsNotRegex" xml:space="preserve">
+    <value>مقدار فیلد {0}  طبق فرمت معتبر نمی باشد</value>
+  </data>
+  <data name="FormIsNotValid" xml:space="preserve">
+    <value>داده‌های ورودی نامعتبر می‌باشد</value>
+  </data>
+  <data name="InvalidCaptcha" xml:space="preserve">
+    <value>کد امنیتی نا معتبر است</value>
+  </data>
+  <data name="NotFoundAnyRecords" xml:space="preserve">
+    <value>هیچ رکوردی یافت نشد</value>
+  </data>
+  <data name="OTPGenerated" xml:space="preserve">
+    <value>رمز پویا با موفقیت ایجاد شد</value>
+  </data>
+  <data name="OTPIsValid" xml:space="preserve">
+    <value>رمز پویا معتبر می باشد</value>
+  </data>
+  <data name="OTPSent" xml:space="preserve">
+    <value>رمز یکبار مصرف ارسال شد</value>
+  </data>
+  <data name="PasswordChanged" xml:space="preserve">
+    <value>گذرواژه با موفقیت تغییر یافت</value>
+  </data>
+  <data name="PasswordChangeFiled" xml:space="preserve">
+    <value>خطا در تغییر گذرواژه</value>
+  </data>
+  <data name="ProcedureExecuted" xml:space="preserve">
+    <value>روال ذخیره شده با موفقیت اجرا گردید</value>
+  </data>
+  <data name="ProcedureFailed" xml:space="preserve">
+    <value>اجرای روال ذخیره شده با شکست مواجه گردید</value>
+  </data>
+  <data name="RecordExisted" xml:space="preserve">
+    <value>این رکورد تکراری می‌باشد</value>
+  </data>
+  <data name="RecordNotFoundError610" xml:space="preserve">
+    <value>این رکورد موجود نمی‌باشد</value>
+  </data>
+  <data name="ReferToErrorsList" xml:space="preserve">
+    <value>به لیست خطای پیوست مراجعه فرمایید</value>
+  </data>
+  <data name="RemoveFailed" xml:space="preserve">
+    <value>حذف رکورد با خطا مواجه گردید</value>
+  </data>
+  <data name="RemoveSuccessed" xml:space="preserve">
+    <value>حذف رکورد با موفقیت صورت پذیرفت</value>
+  </data>
+  <data name="ReportAccessDenied" xml:space="preserve">
+    <value>کاربر شناسه {0}  از سامانه {1}  به این گزارش دسترسی ندارد</value>
+  </data>
+  <data name="ReportFailed" xml:space="preserve">
+    <value>اجرای گزارش با شکست مواجه گردید</value>
+  </data>
+  <data name="ReportFromToDateInInvalid" xml:space="preserve">
+    <value>بازه زمانی گزارش تا یک ماه مجاز می باشد</value>
+  </data>
+  <data name="ReportGenerated" xml:space="preserve">
+    <value>گزارش موردنظر ایجاد گردید</value>
+  </data>
+  <data name="SaveFailed" xml:space="preserve">
+    <value>ثبت رکورد با خطا مواجه گردید</value>
+  </data>
+  <data name="SaveSuccessed" xml:space="preserve">
+    <value>ثبت رکورد با موفقیت صورت پذیرفت</value>
+  </data>
+  <data name="SaveSuccessedWallet" xml:space="preserve">
+    <value>کیف پول با موفقیت ایجاد گردید</value>
+  </data>
+  <data name="SaveSuccessedWithID" xml:space="preserve">
+    <value>این رکورد با موفقیت و با شناسه {0} ثبت گردید</value>
+  </data>
+  <data name="SecretKeySent" xml:space="preserve">
+    <value>کلید کاربری به رایانامه و شماره همراه ارسال گردید</value>
+  </data>
+  <data name="SecurityCodeSendToCellphone" xml:space="preserve">
+    <value>عبارت امنیتی برای شماره همراه {0}  ارسال گردید</value>
+  </data>
+  <data name="ServerNotImplemented" xml:space="preserve">
+    <value>این نوع سرور پیاده سازی نشده است</value>
+  </data>
+  <data name="SMSFailed" xml:space="preserve">
+    <value>ارسال پیامک با شکست مواجه شد</value>
+  </data>
+  <data name="SMSSent" xml:space="preserve">
+    <value>پیامک با موفقیت ارسال شد</value>
+  </data>
+  <data name="TerminalIsValid" xml:space="preserve">
+    <value>پایانه معتبر می‌باشد</value>
+  </data>
+  <data name="TransactionSuccessed" xml:space="preserve">
+    <value>تراکنش با موفقیت انجام شد</value>
+  </data>
+  <data name="UnknownException" xml:space="preserve">
+    <value>مواجهه با یک استثنای ناشناخته</value>
+  </data>
+  <data name="UpdateFailed" xml:space="preserve">
+    <value>ویرایش رکورد با خطا موجه گردید</value>
+  </data>
+  <data name="UpdateSuccessed" xml:space="preserve">
+    <value>ویرایش رکورد با موفقیت صورت پذیرفت</value>
+  </data>
+  <data name="UserBatchCreation" xml:space="preserve">
+    <value>ایجاد کاربری {0} تعداد از {1} ردیف کل با موفقیت انجام شد</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>کاربر یافت نشد</value>
+  </data>
+  <data name="UserNotMathWithSelectedRecord" xml:space="preserve">
+    <value>رکورد انتخاب شده متعلق به این کاربر نمی باشد</value>
+  </data>
+  <data name="ValueServerAndReport" xml:space="preserve">
+    <value>نام سرور {0} | نام گزارش: {1}</value>
+  </data>
+  <data name="VerifyVoucherSuccessed" xml:space="preserve">
+    <value>تایید تراکنش دو مرحله ای با موفقیت انجام شد</value>
+  </data>
+  <data name="VoucherRegistered" xml:space="preserve">
+    <value>تراکنش با موفقیت انجام شد</value>
+  </data>
+  <data name="WalletMatched" xml:space="preserve">
+    <value>کیف پول با اطلاعات وارد شده معتبر می باشد</value>
+  </data>
+  <data name="WalletNotMatched" xml:space="preserve">
+    <value>کیف پول با مشخصات فوق یافت نشد</value>
+  </data>
+</root>

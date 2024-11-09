@@ -1,0 +1,450 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountNumberIsClosed" xml:space="preserve">
+    <value>این شماره حساب بسته شده است</value>
+  </data>
+  <data name="AccountNumberIsDeactive" xml:space="preserve">
+    <value>شماره حساب توسط بانک غیرفعال شده است</value>
+  </data>
+  <data name="AccountTypeUnknown" xml:space="preserve">
+    <value>نوع حساب ناشناخته می باشد</value>
+  </data>
+  <data name="Amount0NotValid" xml:space="preserve">
+    <value>امکان تراکنش با مبلغ صفر ریال امکانپذیر نمی باشد</value>
+  </data>
+  <data name="ApiKeyNotFound" xml:space="preserve">
+    <value>رشته کاربری معتبر نمی باشد</value>
+  </data>
+  <data name="BridgeRulesNotValid" xml:space="preserve">
+    <value>شرایط پل احراز نشد</value>
+  </data>
+  <data name="CaptchaFailed" xml:space="preserve">
+    <value>کد امنیتی صحیح نمی باشد</value>
+  </data>
+  <data name="CellphoneNotValid" xml:space="preserve">
+    <value>شماره تلفن همراه معتبر نمی باشد</value>
+  </data>
+  <data name="ChargeFailed" xml:space="preserve">
+    <value>شارژ جیب با شکست مواجه شد</value>
+  </data>
+  <data name="ChargeSuccessed" xml:space="preserve">
+    <value>شارژ جیب با موفقیت انجام شد</value>
+  </data>
+  <data name="CofederationExpired" xml:space="preserve">
+    <value>قرارداد هم پیمانی منقضی شده است</value>
+  </data>
+  <data name="CofederationFailed" xml:space="preserve">
+    <value>ارسال به هم پیمان با شکست مواجه شد</value>
+  </data>
+  <data name="CofederationSuccessed" xml:space="preserve">
+    <value>ارسال به هم پیمان با موفقیت انجام شد</value>
+  </data>
+  <data name="CommonAccountIsForbidden" xml:space="preserve">
+    <value>امکان استفاده ازحساب مشترک در کیف پول ممنوعیت دارد</value>
+  </data>
+  <data name="CountTransactionDailyRejected" xml:space="preserve">
+    <value>سقف تعداد تراکنش روزانه این جیب تکمیل شده است</value>
+  </data>
+  <data name="CountTransactionMonthlyRejected" xml:space="preserve">
+    <value>سقف تعداد تراکنش ماهیانه این جیب تکمیل شده است</value>
+  </data>
+  <data name="CreateUserDenied" xml:space="preserve">
+    <value>ایجاد کاربر جدید توسط مرکز محدود شده است</value>
+  </data>
+  <data name="CreateUserFailed" xml:space="preserve">
+    <value>ثبت کاربری با خطا مواجه شد</value>
+  </data>
+  <data name="CreateWalletFailed" xml:space="preserve">
+    <value>ایجاد کیف پول با مشکل مواجه گردید</value>
+  </data>
+  <data name="CreatorTransactionDenied" xml:space="preserve">
+    <value>عدم همخوانی کاربران تراکنش</value>
+  </data>
+  <data name="CustomerNumberNotFound905" xml:space="preserve">
+    <value>این کاربر فاقد شماره مشتری در بانک می باشد</value>
+  </data>
+  <data name="DepositDailyRejected" xml:space="preserve">
+    <value>سقف واریز روزانه به جیب مقصد رعایت نشده است</value>
+  </data>
+  <data name="DepositMonthlyRejected" xml:space="preserve">
+    <value>سقف واریز ماهیانه به جیب مقصد رعایت نشده است</value>
+  </data>
+  <data name="DepositTotalRejected" xml:space="preserve">
+    <value>سقف واریز کل به جیب مقصد رعایت نشده است</value>
+  </data>
+  <data name="DestinationWalletNotFound" xml:space="preserve">
+    <value>کیف پول مقصد یافت نشد</value>
+  </data>
+  <data name="Error605" xml:space="preserve">
+    <value>605</value>
+  </data>
+  <data name="Error610" xml:space="preserve">
+    <value>610</value>
+  </data>
+  <data name="Error930" xml:space="preserve">
+    <value>930</value>
+  </data>
+  <data name="Error931" xml:space="preserve">
+    <value>931</value>
+  </data>
+  <data name="ErrorInBusiness" xml:space="preserve">
+    <value>خطای فرآیند کسب و کار</value>
+  </data>
+  <data name="ExceptionRaised" xml:space="preserve">
+    <value>یک استثنای درونی بوجود آمده است</value>
+  </data>
+  <data name="FiledsNotCompleted" xml:space="preserve">
+    <value>اقلام اطلاعاتی مورد نیاز کامل نیستند</value>
+  </data>
+  <data name="FileMatcherIsNotValid" xml:space="preserve">
+    <value>پسوند درونی فایل {0}  نامعتبر می باشد</value>
+  </data>
+  <data name="FileNotFound" xml:space="preserve">
+    <value>فایل پیوست یافت نشد</value>
+  </data>
+  <data name="FromPocketNotFound" xml:space="preserve">
+    <value>جیب مبدا یافت نشد</value>
+  </data>
+  <data name="GatewayIsClosed" xml:space="preserve">
+    <value>درگاه پرداخت توسط ادمین کل بسته شده است</value>
+  </data>
+  <data name="GatewayMaxTransactionIsNotValid" xml:space="preserve">
+    <value>سقف تراکنش در درگاه پرداخت رعایت نشده است</value>
+  </data>
+  <data name="GatewayPostMessageFailed" xml:space="preserve">
+    <value>پیام رمزشده درگاه پرداخت نامعتبر است</value>
+  </data>
+  <data name="GatewayPostMessageSuccessed" xml:space="preserve">
+    <value>فرآیند بازگشایی پیام رمزشده درگاه پرداخت با موفقت پایان یافت</value>
+  </data>
+  <data name="GiftRulesNotValid" xml:space="preserve">
+    <value>شرایط اعطای هدیه به کاربر میسر نمی باشد</value>
+  </data>
+  <data name="GiftTypeNotValid" xml:space="preserve">
+    <value>نوع هدیه نامشخص می باشد</value>
+  </data>
+  <data name="InquiryFailed" xml:space="preserve">
+    <value>فزآیند استعلام با شکست مواجه شد</value>
+  </data>
+  <data name="InquirySuccess" xml:space="preserve">
+    <value>فرآیند استعلام با موفقیت انجام شد</value>
+  </data>
+  <data name="LessBalancePocket" xml:space="preserve">
+    <value>موجودی جیب ناکافی است</value>
+  </data>
+  <data name="LessBalanceVoucher" xml:space="preserve">
+    <value>موجودی این صورتحساب ناکافی است</value>
+  </data>
+  <data name="MaxPerTransactionRejected" xml:space="preserve">
+    <value>سقف تراکنش رعایت  نشده است</value>
+  </data>
+  <data name="MerchantAccessForbidden" xml:space="preserve">
+    <value>پذیرنده فاقد دسترسی به کیف پول مقصد می باشد</value>
+  </data>
+  <data name="MerchantNotFound" xml:space="preserve">
+    <value>پذیرنده یافت نشد</value>
+  </data>
+  <data name="MinAfterCharge" xml:space="preserve">
+    <value>حداقل مانده  {0}  ریال می باشد</value>
+  </data>
+  <data name="MinChargeRejected" xml:space="preserve">
+    <value>حداقل شارژ  {0}  ریال می‌باشد</value>
+  </data>
+  <data name="NIDNotMatchWithAccountNumber" xml:space="preserve">
+    <value>عدم تطابق شماره حساب و کدملی در سمت بانک</value>
+  </data>
+  <data name="NIDNotValid" xml:space="preserve">
+    <value>کد/شناسه ملی معتبر نمی باشد</value>
+  </data>
+  <data name="OTPBlocked" xml:space="preserve">
+    <value>رمز پویا برای کاربر جاری به مدت 5 دقیقه شده است</value>
+  </data>
+  <data name="OTPFailed" xml:space="preserve">
+    <value>رمز یکبارمصرف نامعتبر است</value>
+  </data>
+  <data name="OTPFieldsNotMatched" xml:space="preserve">
+    <value>اقلام رمز پویا با انبار داده مطابقت ندارد</value>
+  </data>
+  <data name="OTPGenerationFailed" xml:space="preserve">
+    <value>ایجاد رمز پویا با شکست مواجه شد</value>
+  </data>
+  <data name="OTPIsUsed" xml:space="preserve">
+    <value>رمز یکبار مصرف قبلا استفاده شده است.</value>
+  </data>
+  <data name="OTPLastSentError" xml:space="preserve">
+    <value>رمز پویا کمتر از 90 ثانیه پیش درخواست شده است</value>
+  </data>
+  <data name="OTPNotInRedis" xml:space="preserve">
+    <value>رمز پویا در انبار داده یافت نشد</value>
+  </data>
+  <data name="OTPNotSent" xml:space="preserve">
+    <value>ارسال رمز پویا با شکست مواجه شد</value>
+  </data>
+  <data name="PocketAccessDenied" xml:space="preserve">
+    <value>این جیب یا وجود ندارد یا شما مجاز به دسترسی به آن نمی باشید</value>
+  </data>
+  <data name="PocketNotFound" xml:space="preserve">
+    <value>جیب مورد نظر یافت نشد</value>
+  </data>
+  <data name="PocketToNotFound" xml:space="preserve">
+    <value>جیب طرف دوم حساب یافت نشد</value>
+  </data>
+  <data name="RecordNotFound" xml:space="preserve">
+    <value>این رکورد موجود نمی باشد</value>
+  </data>
+  <data name="RepetitiveRefund" xml:space="preserve">
+    <value>برای صورتحساب {VoucherNumber} در گذشته استرداد وجه ثبت شده است</value>
+  </data>
+  <data name="SamePocketForbidden" xml:space="preserve">
+    <value>یکسان بودن شناسه جیب مبدا و مقصد مجاز نمی باشد</value>
+  </data>
+  <data name="SecretKeyNotValid" xml:space="preserve">
+    <value>کلید محرمانه معتبر نمی باشد</value>
+  </data>
+  <data name="ServiceUnavailable" xml:space="preserve">
+    <value>سرویس مورد نظر فعال نمی باشد</value>
+  </data>
+  <data name="SettingFailed" xml:space="preserve">
+    <value>تنظیمات ادمین مانع از انجام این فرآیند است</value>
+  </data>
+  <data name="SettingNotFound" xml:space="preserve">
+    <value>تنظیمات یافت نشد</value>
+  </data>
+  <data name="SettleAccountNotFound" xml:space="preserve">
+    <value>حساب تسویه یافت نشد</value>
+  </data>
+  <data name="SourceWalletNotFound" xml:space="preserve">
+    <value>کیف پول مبدا یافت نشد</value>
+  </data>
+  <data name="TerminalNotFound" xml:space="preserve">
+    <value>ترمینال یافت نشد</value>
+  </data>
+  <data name="TerminalNotValid" xml:space="preserve">
+    <value>پایانه معتبر نمی باشد</value>
+  </data>
+  <data name="ToPocketNotFound" xml:space="preserve">
+    <value>جیب مقصد یافت نشد</value>
+  </data>
+  <data name="TransactionConditionsDenied" xml:space="preserve">
+    <value>شرایط تراکنش محقق نشد</value>
+  </data>
+  <data name="TransactionDenied" xml:space="preserve">
+    <value>شما مجوز دسترسی به این تراکنش را ندارید</value>
+  </data>
+  <data name="TransactionFailed" xml:space="preserve">
+    <value>تراکنش {TransactionTypeID} با شکست مواجه شد</value>
+  </data>
+  <data name="TransactionFailedInVIPC" xml:space="preserve">
+    <value>تراکنش در هسته متمرکز مهرگستر با شکست مواجه شد</value>
+  </data>
+  <data name="TransactionPocketTypeNotFound" xml:space="preserve">
+    <value>این تراکنش برای جیب مورد نظر تعریف نشده است</value>
+  </data>
+  <data name="TransactionTypeDeactivated" xml:space="preserve">
+    <value>نوع تراکنش ارسالی، توسط ادمین پلتفرم غیرفعال شده است</value>
+  </data>
+  <data name="TransactionTypeInvalid" xml:space="preserve">
+    <value>نوع تراکنش نامعتبر است</value>
+  </data>
+  <data name="TransferAccountToAccountFailed" xml:space="preserve">
+    <value>عملیات انتقال وجه در هسته متمرکز بانکداری با شکست مواجه شد</value>
+  </data>
+  <data name="TransferAccountToAccountSuccessed" xml:space="preserve">
+    <value>عملیات انتقال وجه با موفقیت انجام شد</value>
+  </data>
+  <data name="TransferFailed" xml:space="preserve">
+    <value>انتقال وجه با شکست مواجه شد</value>
+  </data>
+  <data name="TransferSuccessed" xml:space="preserve">
+    <value>انتقال وجه با موفقیت صورت پذیرفت</value>
+  </data>
+  <data name="UnknownChargeType" xml:space="preserve">
+    <value>نوع شارژ ناشناخته است</value>
+  </data>
+  <data name="UpdateFailed" xml:space="preserve">
+    <value>بروزرسانی با شکست مواجه گردید</value>
+  </data>
+  <data name="UserAccountNotFound" xml:space="preserve">
+    <value>شماره حساب کاربر یافت نشد</value>
+  </data>
+  <data name="UserAccountNotRegistered" xml:space="preserve">
+    <value>این شماره حساب در کیف پول ثبت نشده است</value>
+  </data>
+  <data name="UserCreatedButWalletFailed" xml:space="preserve">
+    <value>کاربری ایجاد شد اما در ساخت کیف پول با مشکل مواجه گردید</value>
+  </data>
+  <data name="UserExist" xml:space="preserve">
+    <value>این کدملی قبلا ثبت شده است</value>
+  </data>
+  <data name="UserGaurdNotValid" xml:space="preserve">
+    <value>نقطه اتصال کاربر معتبر نمی باشد</value>
+  </data>
+  <data name="UserInRoleExisted" xml:space="preserve">
+    <value>این نقش قبلا به این کاربر نسبت داده شده است</value>
+  </data>
+  <data name="UserMatchingNotValid" xml:space="preserve">
+    <value>کاربر اقدام کننده  با مالک رکورد همخوانی ندارد</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>کاربر یافت نشد</value>
+  </data>
+  <data name="UserTypeNotValid" xml:space="preserve">
+    <value>نوع کاربری معتبر نمی باشد</value>
+  </data>
+  <data name="ValurInOld" xml:space="preserve">
+    <value>تاریخ والور از تاریخ روز جاری کوچکتر است</value>
+  </data>
+  <data name="VerifyVoucherFailed" xml:space="preserve">
+    <value>تایید تراکنش دو مرحله ای با شکست مواجه شد</value>
+  </data>
+  <data name="VoucherBalanceZero" xml:space="preserve">
+    <value>این صورتحساب مانده ندارد</value>
+  </data>
+  <data name="VoucherExpired" xml:space="preserve">
+    <value>اعتبار این صورتحساب پایان پذیرفته است</value>
+  </data>
+  <data name="VoucherFailed" xml:space="preserve">
+    <value>ثبت صورتحساب با شکست مواجه شد</value>
+  </data>
+  <data name="VoucherNotFound" xml:space="preserve">
+    <value>صورتحساب یافت نشد</value>
+  </data>
+  <data name="VoucherOwnerInValid" xml:space="preserve">
+    <value>تناقض در مالکیت صورتحساب و صاحب کیف</value>
+  </data>
+  <data name="VoucherSuccessed" xml:space="preserve">
+    <value>صورتحساب با موفقیت ثبت شد</value>
+  </data>
+  <data name="WalletNotFound" xml:space="preserve">
+    <value>کیف مورد نظر یافت نشد</value>
+  </data>
+  <data name="WalletOfMerchantNotFount" xml:space="preserve">
+    <value>کیف پول پذیرنده یافت نشد</value>
+  </data>
+  <data name="WithdrawDailyRejected" xml:space="preserve">
+    <value>سقف برداشت روزانه رعایت نشده است</value>
+  </data>
+  <data name="WithdrawMonthlyRejected" xml:space="preserve">
+    <value>سقف برداشت ماهیانه رعایت نشده است</value>
+  </data>
+  <data name="WithdrawTotalRejected" xml:space="preserve">
+    <value>سقف برداشت کل رعایت نشده است</value>
+  </data>
+</root>

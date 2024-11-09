@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CSHM.Data\CSHM.Data.csproj" />
+    <ProjectReference Include="..\CSHM.Domain\CSHM.Domain.csproj" />
+    <ProjectReference Include="..\CSHM.Presentation\CSHM.Presentation.csproj" />
+    <ProjectReference Include="..\CSHM.Widget\CSHM.Widget.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspose.Words" Version="23.4.0" />
+    <PackageReference Include="DocX" Version="2.4.0" />
+    <PackageReference Include="Stimulsoft.Reports.Web.NetCore" Version="2023.1.1" />
+    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
+  </ItemGroup>
+
+</Project>
