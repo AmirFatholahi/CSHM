@@ -4,19 +4,19 @@ using CSHM.Core.Services.Interfaces;
 using CSHM.Data.Context;
 using CSHM.Domain;
 using CSHM.Presentation.Base;
-using CSHM.Presentation.Blog;
+using CSHM.Presentation.Publish;
 using CSHM.Presentation.Resources;
 using CSHM.Widget.Log;
-using Nest;
+
 
 namespace CSHM.Core.Services
 {
-    public class BlogTypeService :Repository<BlogType,BlogTypeViewModel>, IBlogTypeService
+    public class PublishTypeService : Repository<PublishType, PublishTypeViewModel>, IPublishTypeService
     {
         private readonly ILogWidget _log;
         private readonly IMapper _mapper;
 
-        public BlogTypeService(DatabaseContext context, ILogWidget log, IMapper mapper) : base(context, log, mapper)
+        public PublishTypeService(DatabaseContext context, ILogWidget log, IMapper mapper) : base(context, log, mapper)
         {
             _log = log;
             _mapper = mapper;
@@ -24,7 +24,7 @@ namespace CSHM.Core.Services
 
 
 
-        public List<ErrorViewModel> ValidationForm(BlogTypeViewModel entity)
+        public List<ErrorViewModel> ValidationForm(PublishTypeViewModel entity)
         {
             var result = new List<ErrorViewModel>();
 
@@ -39,23 +39,16 @@ namespace CSHM.Core.Services
             }
 
             //Max Length
-            if (!string.IsNullOrEmpty(entity.Title) && entity.Title.Length > 250)
+            if (!string.IsNullOrEmpty(entity.Title) && entity.Title.Length > 100)
             {
                 result.Add(new ErrorViewModel()
                 {
                     ErrorCode = Errors.Error931,
-                    ErrorMessage = string.Format(Messages.FieldMaxLengthExceeded, "عنوان", 250)
+                    ErrorMessage = string.Format(Messages.FieldMaxLengthExceeded, "عنوان", 100)
                 });
             }
 
-            if (!string.IsNullOrEmpty(entity.TitleEN) && entity.TitleEN.Length > 250)
-            {
-                result.Add(new ErrorViewModel()
-                {
-                    ErrorCode = Errors.Error931,
-                    ErrorMessage = string.Format(Messages.FieldMaxLengthExceeded, "عنوان لاتین", 250)
-                });
-            }
+
 
             return result;
         }

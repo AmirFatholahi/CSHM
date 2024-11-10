@@ -45,7 +45,7 @@ public static class Injector
 
         service.AddScoped<IBlogTypeService , BlogTypeService>();
 
-
+        service.AddScoped<IPublishTypeService , PublishTypeService>();
 
         //============================================================ Handlers
         service.AddScoped<IUserHandler, UserHandler>();

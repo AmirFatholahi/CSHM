@@ -8,6 +8,7 @@ using CSHM.Widget.Image;
 using CSHM.Presentations.User;
 using CSHM.Presentations.Role;
 using CSHM.Presentation.Blog;
+using CSHM.Presentation.Publish;
 
 namespace CSHM.Core.Mapping;
 
@@ -59,10 +60,14 @@ public class MyMapper : Profile
 
         //===============================================
         //===============================================
-        //===============================================
+        //===============================================Blog
 
         CreateMap<BlogType, BlogTypeViewModel>();
 
+        //===============================================
+        //===============================================
+        //===============================================Publish
 
+        CreateMap<PublishType , PublishTypeViewModel>();
     }
 }
