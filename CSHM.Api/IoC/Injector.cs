@@ -56,6 +56,8 @@ public static class Injector
 
         service.AddScoped<IMediaTypeService , MediaTypeService>();
 
+        service.AddScoped<IOccupationService , OccupationService>();
+
         //============================================================ Handlers
         service.AddScoped<IUserHandler, UserHandler>();
         
