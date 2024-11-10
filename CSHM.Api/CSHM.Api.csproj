@@ -28,11 +28,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\CSHM.Core\CSHM.Core.csproj" />
+    <ProjectReference Include="..\CSHM.Data\CSHM.Data.csproj" />
+    <ProjectReference Include="..\CSHM.Domain\CSHM.Domain.csproj" />
+    <ProjectReference Include="..\CSHM.Presentation\CSHM.Presentation.csproj" />
     <ProjectReference Include="..\CSHM.Widget\CSHM.Widget.csproj" />
   </ItemGroup>
 

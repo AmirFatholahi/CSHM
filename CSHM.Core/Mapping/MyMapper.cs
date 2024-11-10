@@ -7,6 +7,7 @@ using CSHM.Widget.File;
 using CSHM.Widget.Image;
 using CSHM.Presentations.User;
 using CSHM.Presentations.Role;
+using CSHM.Presentation.Blog;
 
 namespace CSHM.Core.Mapping;
 
@@ -53,6 +54,14 @@ public class MyMapper : Profile
         CreateMap<UserInRoleViewModel, UserInRoleExcelModel>();
         CreateMap<RoleViewModel, RoleExcelModel>();
         CreateMap<RoleClaimViewModel, RoleClaimExcelModel>();
+
+
+
+        //===============================================
+        //===============================================
+        //===============================================
+
+        CreateMap<BlogType, BlogTypeViewModel>();
 
 
     }

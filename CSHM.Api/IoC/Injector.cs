@@ -43,7 +43,7 @@ public static class Injector
 
         service.AddScoped<IUserInRoleService, UserInRoleService>();
 
-
+        service.AddScoped<IBlogTypeService , BlogTypeService>();
 
 
 
