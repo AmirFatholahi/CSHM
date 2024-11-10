@@ -65,6 +65,8 @@ public static class Injector
 
         service.AddScoped<ILanguageService , LanguageService>();
 
+        service.AddScoped<ICategoryTypeService , CategoryTypeService>();
+
         //============================================================ Handlers
         service.AddScoped<IUserHandler, UserHandler>();
         

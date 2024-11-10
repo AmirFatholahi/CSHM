@@ -15,6 +15,7 @@ using CSHM.Presentation.Occupation;
 using CSHM.Presentation.People;
 using CSHM.Presentation.Lable;
 using CSHM.Presentation.Language;
+using CSHM.Presentation.Category;
 
 namespace CSHM.Core.Mapping;
 
@@ -116,5 +117,11 @@ public class MyMapper : Profile
         //===============================================Language
 
         CreateMap<Language , LanguageViewModel>();
+
+        //===============================================
+        //===============================================
+        //===============================================Category
+
+        CreateMap<CategoryType , CategoryTypeViewModel>();
     }
 }
