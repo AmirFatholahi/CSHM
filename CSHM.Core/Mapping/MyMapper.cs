@@ -12,6 +12,7 @@ using CSHM.Presentation.Publish;
 using CSHM.Presentation.Product;
 using CSHM.Presentations.Media;
 using CSHM.Presentation.Occupation;
+using CSHM.Presentation.People;
 
 namespace CSHM.Core.Mapping;
 
@@ -94,5 +95,11 @@ public class MyMapper : Profile
         //===============================================Occupation
 
         CreateMap<Occupation , OccupationViewModel>();
+
+        //===============================================
+        //===============================================
+        //===============================================People
+
+        CreateMap<Person , PersonViewModel>();
     }
 }
