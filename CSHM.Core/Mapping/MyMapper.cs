@@ -82,6 +82,7 @@ public class MyMapper : Profile
         //===============================================Publish
 
         CreateMap<PublishType , PublishTypeViewModel>();
+        CreateMap<Publisher , PublisherViewModel>();
 
 
         //===============================================
