@@ -31,14 +31,19 @@ public static class Injector
     {
         //============================================================ SERVICES
         service.AddScoped<IUserService, UserService>();
+        
         service.AddScoped<IControllerActionService, ControllerActionService>();
+        
         service.AddScoped<IPageService, PageService>();
+        
         service.AddScoped<IPolicyService, PolicyService>();
+        
         service.AddScoped<IPolicyParameterService, PolicyParameterService>();
+        
         service.AddScoped<IUserPolicyService, UserPolicyService>();
 
-
         service.AddScoped<IRoleClaimService, RoleClaimService>();
+        
         service.AddScoped<IRoleService, RoleService>();
 
         service.AddScoped<IUserInRoleService, UserInRoleService>();
@@ -46,6 +51,10 @@ public static class Injector
         service.AddScoped<IBlogTypeService , BlogTypeService>();
 
         service.AddScoped<IPublishTypeService , PublishTypeService>();
+
+        service.AddScoped<IProductTypeService , ProductTypeService>();
+
+        service.AddScoped<IMediaTypeService , MediaTypeService>();
 
         //============================================================ Handlers
         service.AddScoped<IUserHandler, UserHandler>();

@@ -9,6 +9,8 @@ using CSHM.Presentations.User;
 using CSHM.Presentations.Role;
 using CSHM.Presentation.Blog;
 using CSHM.Presentation.Publish;
+using CSHM.Presentation.Product;
+using CSHM.Presentations.Media;
 
 namespace CSHM.Core.Mapping;
 
@@ -19,7 +21,9 @@ public class MyMapper : Profile
         //=============================================================== IDENTITY
 
         CreateMap<PolicyParameter, PolicyParameterViewModel>();
+        
         CreateMap<Policy, PolicyViewModel>();
+        
         CreateMap<UserPolicy, UserPolicyViewModel>()
             .ForMember(x => x.PolicyParameterID, opt => opt.MapFrom(origin => origin.Policy.PolicyParameterID))
             .ForMember(x => x.PolicyParameterTitle, opt => opt.MapFrom(origin => origin.Policy.PolicyParameter.Title))
@@ -44,10 +48,13 @@ public class MyMapper : Profile
 
 
         CreateMap<Role, RoleViewModel>();
+        
         CreateMap<RoleClaim, RoleClaimViewModel>();
 
         CreateMap<PolicyParameterViewModel, PolicyParameterExcelModel>();
+        
         CreateMap<PolicyViewModel, PolicyExcelModel>();
+        
         CreateMap<UserPolicyViewModel, UserPolicyExcelModel>();
 
       
@@ -57,6 +64,10 @@ public class MyMapper : Profile
         CreateMap<RoleClaimViewModel, RoleClaimExcelModel>();
 
 
+        //===============================================
+        //===============================================
+        //===============================================Media
+        CreateMap<MediaType,MediaTypeViewModel>();
 
         //===============================================
         //===============================================
@@ -69,5 +80,12 @@ public class MyMapper : Profile
         //===============================================Publish
 
         CreateMap<PublishType , PublishTypeViewModel>();
+
+
+        //===============================================
+        //===============================================
+        //===============================================Product
+
+        CreateMap<ProductType,ProductTypeViewModel>();
     }
 }
