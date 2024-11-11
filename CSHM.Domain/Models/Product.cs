@@ -13,6 +13,8 @@ namespace CSHM.Domain
 
         public int ID { get; set; }
 
+        public int PublisherID { get; set; }
+
         public int ProductTypeID { get; set; }
 
         public int PublishTypeID { get; set; }
@@ -66,6 +68,8 @@ namespace CSHM.Domain
         public int? ModifierID { get; set; }
 
         public DateTime? ModificationDateTime { get; set; }
+
+        public virtual Publisher Publisher { get; set; }
 
         public virtual ProductType ProductType { get; set; }
 
