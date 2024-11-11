@@ -73,6 +73,7 @@ public static class Injector
 
         service.AddScoped<ISizeTypeService , SizeTypeService>();
 
+        service.AddScoped<ICoverTypeService , CoverTypeService>();
         //============================================================ Handlers
         service.AddScoped<IUserHandler, UserHandler>();
         

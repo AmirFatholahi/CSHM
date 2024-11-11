@@ -17,6 +17,7 @@ using CSHM.Presentation.Lable;
 using CSHM.Presentation.Language;
 using CSHM.Presentation.Category;
 using CSHM.Presentation.Size;
+using CSHM.Presentation.Cover;
 
 namespace CSHM.Core.Mapping;
 
@@ -134,5 +135,11 @@ public class MyMapper : Profile
         //===============================================Size
 
         CreateMap<SizeType , SizeTypeViewModel>();
+
+        //===============================================
+        //===============================================
+        //===============================================Cover
+
+        CreateMap<CoverType, CoverTypeViewModel>();
     }
 }
