@@ -52,6 +52,7 @@ public static class Injector
 
         service.AddScoped<IPublishTypeService , PublishTypeService>();
         service.AddScoped<IPublisherService , PublisherService>();
+        service.AddScoped<IPublisherBranchService , PublisherBranchService>();
 
         service.AddScoped<IProductTypeService , ProductTypeService>();
 

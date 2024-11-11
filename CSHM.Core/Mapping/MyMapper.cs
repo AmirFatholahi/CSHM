@@ -86,6 +86,7 @@ public class MyMapper : Profile
 
         CreateMap<PublishType , PublishTypeViewModel>();
         CreateMap<Publisher , PublisherViewModel>();
+        CreateMap<PublisherBranch , PublisherBranchViewModel>();
 
 
         //===============================================
