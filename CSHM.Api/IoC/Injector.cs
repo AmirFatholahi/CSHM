@@ -71,6 +71,8 @@ public static class Injector
 
         service.AddScoped<ICategoryTypeService , CategoryTypeService>();
 
+        service.AddScoped<ISizeTypeService , SizeTypeService>();
+
         //============================================================ Handlers
         service.AddScoped<IUserHandler, UserHandler>();
         
