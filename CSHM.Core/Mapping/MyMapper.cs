@@ -99,6 +99,7 @@ public class MyMapper : Profile
 
         CreateMap<ProductType,ProductTypeViewModel>();
         CreateMap<Product , ProductViewModel>();
+        CreateMap<ProductCategoryType , ProductCategoryTypeViewModel>();
 
         //===============================================
         //===============================================
