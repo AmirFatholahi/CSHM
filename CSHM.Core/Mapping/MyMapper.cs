@@ -106,6 +106,7 @@ public class MyMapper : Profile
         //===============================================People
 
         CreateMap<Person , PersonViewModel>();
+        CreateMap<PersonOccupation , PersonOccupationViewModel>();
 
         //===============================================
         //===============================================
