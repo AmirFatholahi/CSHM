@@ -80,6 +80,7 @@ public class MyMapper : Profile
 
         CreateMap<BlogType, BlogTypeViewModel>();
         CreateMap<BlogStatusType , BlogStatusTypeViewModel>();
+        CreateMap<Blog , BlogViewModel>();
 
         //===============================================
         //===============================================

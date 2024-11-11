@@ -11,7 +11,7 @@ using CSHM.Widget.Log;
 
 namespace CSHM.Core.Services
 {
-    public class BlogStatusTypeService : Repository<BlogStatusType, BlogStatusTypeViewModel>, IBlogTypeService
+    public class BlogStatusTypeService : Repository<BlogStatusType, BlogStatusTypeViewModel>, IBlogStatusTypeService
     {
         private readonly ILogWidget _log;
         private readonly IMapper _mapper;
