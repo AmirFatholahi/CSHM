@@ -264,7 +264,7 @@ public class UserService : Repository<User, UserViewModel>, IUserService
     public HttpResponseMessage ExcelAll()
     {
         HttpResponseMessage result;
-        var items = SelectAll(null).List;
+        var items = GetAll(null).ToList();
         var list = _mapper.Map<List<UserExcelModel>>(items);
 
         result = _excel.GenerateExcel(list, null, false, "Report", OfficeOpenXml.Table.TableStyles.Medium2, "Sheet1", true, true);
