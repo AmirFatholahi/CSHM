@@ -5,10 +5,7 @@ namespace CSHM.Domain.Models
 {
     public class BlogPublisher : IEntity
     {
-        public BlogPublisher()
-        {
-            
-        }
+        public BlogPublisher()        {                  }
 
         public int ID { get; set; }
 

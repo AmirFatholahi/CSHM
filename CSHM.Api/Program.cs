@@ -9,7 +9,6 @@ using Newtonsoft.Json.Serialization;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
-using Quartz;
 using CSHM.Api.Extensions;
 using CSHM.Api.IoC;
 using CSHM.Api.Middlewares;
@@ -230,11 +229,11 @@ builder.Services.AddMvc(options =>
 RegisterServices(builder.Services);
 
 
-builder.Services.AddQuartzHostedService(options =>
-{
-    // when shutting down we want jobs to complete gracefully
-    options.WaitForJobsToComplete = true;
-});
+//builder.Services.AddQuartzHostedService(options =>
+//{
+//    // when shutting down we want jobs to complete gracefully
+//    options.WaitForJobsToComplete = true;
+//});
 var app = builder.Build();
 
 
