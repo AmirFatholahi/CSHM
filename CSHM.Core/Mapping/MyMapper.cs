@@ -85,6 +85,7 @@ public class MyMapper : Profile
         CreateMap<BlogStatusType , BlogStatusTypeViewModel>();
         CreateMap<Blog , BlogViewModel>();
         CreateMap<BlogPublisher , BlogPublisherViewModel>();
+        CreateMap<BlogOccupation , BlogOccupationViewModel>();
 
         //===============================================
         //===============================================

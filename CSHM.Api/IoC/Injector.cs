@@ -52,6 +52,7 @@ public static class Injector
         service.AddScoped<IBlogStatusTypeService , BlogStatusTypeService>();
         service.AddScoped<IBlogService , BlogService>();
         service.AddScoped<IBlogPublisherService , BlogPublisherService>();
+        service.AddScoped<IBlogOccupationService , BlogOccupationService>();
 
         service.AddScoped<IPublishTypeService , PublishTypeService>();
         service.AddScoped<IPublisherService , PublisherService>();
