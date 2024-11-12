@@ -123,33 +123,6 @@ public class CalenderDimensionService : Repository<CalenderDimension, CalenderDi
 
 
 
-
-    //public override ResultViewModel<CalenderDimensionViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
-    //{
-    //    var result = new ResultViewModel<CalenderDimensionViewModel>();
-    //    try
-    //    {
-    //        IQueryable<CalenderDimension> items;
-    //        Expression<Func<CalenderDimension, bool>> condition = x => string.IsNullOrWhiteSpace(filter) || x.GregDate.Contains(filter) || x.HijriDate.Contains(filter) || x.JalaliDate.Contains(filter);
-    //        items = GetAll(activate, condition, pageNumber, pageSize);
-    //        result.List = MapToViewModel(items);
-
-    //        result.TotalCount = Count(activate, condition);
-
-    //        result.Message = result.TotalCount > 0
-    //            ? new MessageViewModel { Status = Statuses.Success }
-    //            : new MessageViewModel { Status = Statuses.Warning, Message = Messages.NotFoundAnyRecords };
-    //        return result;
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        _log.ExceptionLog(ex, MethodBase.GetCurrentMethod().GetSourceName());
-    //        result.Message = new MessageViewModel { Status = Statuses.Error, Message = _log.GetExceptionMessage(ex) };
-    //        return result;
-    //    }
-    //}
-
-
     /// <summary>
     /// اعتبارسنجی فرم
     /// </summary>
