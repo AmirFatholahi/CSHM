@@ -12,6 +12,10 @@ namespace CSHM.Domain
 
         public int ExtensionTypeID { get; set; }
 
+        public int BlogID { get; set; }
+
+        public int ProductID { get; set; }
+
         public string EntityName { get; set; }
 
         public int EntityID { get; set; }
@@ -47,5 +51,9 @@ namespace CSHM.Domain
         public virtual MediaType MediaType { get; set; }
 
         public virtual ExtensionType ExtensionType { get; set; }
+
+        public virtual Blog Blog { get; set; }
+
+        public virtual Product Product { get; set; }
     }
 }

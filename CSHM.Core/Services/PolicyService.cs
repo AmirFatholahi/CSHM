@@ -65,39 +65,39 @@ public class PolicyService : Repository<Policy, PolicyViewModel>, IPolicyService
 
 
 
-    public override ResultViewModel<PolicyViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
-    {
-        var result = new ResultViewModel<PolicyViewModel>();
-        try
-        {
-            IQueryable<Policy> items;
-            Expression<Func<Policy, bool>> condition = x => string.IsNullOrWhiteSpace(filter) || x.Key.Contains(filter) || x.Value.Contains(filter);
-            if (!string.IsNullOrWhiteSpace(filter))
-            {
-                items = GetAll(activate, condition, pageNumber, pageSize);
-            }
-            else
-            {
-                items = GetAll(activate, null, pageNumber, pageSize);
-            }
-            result.List = MapToViewModel(items);
+    //public override ResultViewModel<PolicyViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
+    //{
+    //    var result = new ResultViewModel<PolicyViewModel>();
+    //    try
+    //    {
+    //        IQueryable<Policy> items;
+    //        Expression<Func<Policy, bool>> condition = x => string.IsNullOrWhiteSpace(filter) || x.Key.Contains(filter) || x.Value.Contains(filter);
+    //        if (!string.IsNullOrWhiteSpace(filter))
+    //        {
+    //            items = GetAll(activate, condition, pageNumber, pageSize);
+    //        }
+    //        else
+    //        {
+    //            items = GetAll(activate, null, pageNumber, pageSize);
+    //        }
+    //        result.List = MapToViewModel(items);
 
-            result.TotalCount = Count(activate, condition);
+    //        result.TotalCount = Count(activate, condition);
 
-            result.Message = result.TotalCount > 0
-                ? new MessageViewModel { Status = Statuses.Success }
-                : new MessageViewModel { Status = Statuses.Warning, Message = Messages.NotFoundAnyRecords };
-            return result;
-        }
-        catch (Exception ex)
-        {
-            _log.ExceptionLog(ex, MethodBase.GetCurrentMethod().GetSourceName());
-            var errors = new List<ErrorViewModel>();
-            errors.Add(new ErrorViewModel() { ErrorCode = ex.HResult.ToString(), ErrorMessage = _log.GetExceptionMessage(ex) });
-            result.Message = new MessageViewModel { Status = Statuses.Error, Message = Messages.UnknownException, Errors = errors };
-            return result;
-        }
-    }
+    //        result.Message = result.TotalCount > 0
+    //            ? new MessageViewModel { Status = Statuses.Success }
+    //            : new MessageViewModel { Status = Statuses.Warning, Message = Messages.NotFoundAnyRecords };
+    //        return result;
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        _log.ExceptionLog(ex, MethodBase.GetCurrentMethod().GetSourceName());
+    //        var errors = new List<ErrorViewModel>();
+    //        errors.Add(new ErrorViewModel() { ErrorCode = ex.HResult.ToString(), ErrorMessage = _log.GetExceptionMessage(ex) });
+    //        result.Message = new MessageViewModel { Status = Statuses.Error, Message = Messages.UnknownException, Errors = errors };
+    //        return result;
+    //    }
+    //}
 
 
 

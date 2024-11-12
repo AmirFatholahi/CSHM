@@ -132,7 +132,7 @@ public class UserService : Repository<User, UserViewModel>, IUserService
                 var password = GenerateRandomPassword();
                 entity.NormalizedUserName = entity.UserName.ToUpper();
                 entity.EmailConfirmed = false;
-                entity.Avatar = CreateRandomAvatar(entity.GenderTypeID == 0 ? 1 : entity.GenderTypeID);
+             //   entity.Avatar = CreateRandomAvatar(entity.GenderTypeID == 0 ? 1 : entity.GenderTypeID);
                 entity.LockoutEnabled = false;
                 entity.SecretKey = OTPWidget.GenerateSecretKey(entity.UserName);
                 entity.AccessFailedCount = 0;
@@ -283,37 +283,37 @@ public class UserService : Repository<User, UserViewModel>, IUserService
     /// <param name="pageNumber"></param>
     /// <param name="pageSize"></param>
     /// <returns></returns>
-    public override ResultViewModel<UserViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
-    {
-        var result = new ResultViewModel<UserViewModel>();
-        try
-        {
-            IQueryable<User> items;
-            Expression<Func<User, bool>> condition = x => string.IsNullOrWhiteSpace(filter) || x.UserName.Contains(filter) || x.AliasName.Contains(filter) || x.FullName.Contains(filter);
-            if (!string.IsNullOrWhiteSpace(filter))
-            {
-                items = GetAll(activate, condition, pageNumber, pageSize, o => o.Id, true);
-            }
-            else
-            {
-                items = GetAll(activate, null, pageNumber, pageSize, o => o.Id, true);
-            }
-            result.List = MapToViewModel(items);
+    //public override ResultViewModel<UserViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
+    //{
+    //    var result = new ResultViewModel<UserViewModel>();
+    //    try
+    //    {
+    //        IQueryable<User> items;
+    //        Expression<Func<User, bool>> condition = x => string.IsNullOrWhiteSpace(filter) || x.UserName.Contains(filter) || x.AliasName.Contains(filter) || x.FullName.Contains(filter);
+    //        if (!string.IsNullOrWhiteSpace(filter))
+    //        {
+    //            items = GetAll(activate, condition, pageNumber, pageSize, o => o.Id, true);
+    //        }
+    //        else
+    //        {
+    //            items = GetAll(activate, null, pageNumber, pageSize, o => o.Id, true);
+    //        }
+    //        result.List = MapToViewModel(items);
 
-            result.TotalCount = Count(activate, condition);
+    //        result.TotalCount = Count(activate, condition);
 
-            result.Message = result.TotalCount > 0 ?
-                new MessageViewModel { Status = Statuses.Success } :
-                new MessageViewModel { Status = Statuses.Warning, Message = Messages.RecordNotFoundError610 };
-            return result;
-        }
-        catch (Exception ex)
-        {
-            _log.ExceptionLog(ex, MethodBase.GetCurrentMethod()?.GetSourceName());
-            result.Message = new MessageViewModel { Status = Statuses.Error, Message = _log.GetExceptionMessage(ex) };
-            return result;
-        }
-    }
+    //        result.Message = result.TotalCount > 0 ?
+    //            new MessageViewModel { Status = Statuses.Success } :
+    //            new MessageViewModel { Status = Statuses.Warning, Message = Messages.RecordNotFoundError610 };
+    //        return result;
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        _log.ExceptionLog(ex, MethodBase.GetCurrentMethod()?.GetSourceName());
+    //        result.Message = new MessageViewModel { Status = Statuses.Error, Message = _log.GetExceptionMessage(ex) };
+    //        return result;
+    //    }
+    //}
 
 
 

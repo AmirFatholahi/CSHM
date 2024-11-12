@@ -27,44 +27,44 @@ public class ControllerActionService : Repository<ControllerAction, ControllerAc
         _excel = excel;
     }
 
-    public override ResultViewModel<ControllerActionViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
-    {
-        var result = new ResultViewModel<ControllerActionViewModel>();
-        try
-        {
-            IQueryable<ControllerAction> items;
-            Expression<Func<ControllerAction, bool>> condition = x => string.IsNullOrWhiteSpace(filter) || x.TitleFa.Contains(filter) || x.TitleEn.Contains(filter) ||
-                x.ControllerName.Contains(filter) || x.ActionName.Contains(filter);
+    //public override ResultViewModel<ControllerActionViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
+    //{
+    //    var result = new ResultViewModel<ControllerActionViewModel>();
+    //    try
+    //    {
+    //        IQueryable<ControllerAction> items;
+    //        Expression<Func<ControllerAction, bool>> condition = x => string.IsNullOrWhiteSpace(filter) || x.TitleFa.Contains(filter) || x.TitleEn.Contains(filter) ||
+    //            x.ControllerName.Contains(filter) || x.ActionName.Contains(filter);
 
-            if (!string.IsNullOrWhiteSpace(filter))
-            {
-                items = GetAll(activate, condition, pageNumber, pageSize);
-            }
-            else
-            {
-                items = GetAll(activate, null, pageNumber, pageSize);
-            }
-            result.List = MapToViewModel(items);
+    //        if (!string.IsNullOrWhiteSpace(filter))
+    //        {
+    //            items = GetAll(activate, condition, pageNumber, pageSize);
+    //        }
+    //        else
+    //        {
+    //            items = GetAll(activate, null, pageNumber, pageSize);
+    //        }
+    //        result.List = MapToViewModel(items);
 
-            result.TotalCount = Count(activate, condition);
+    //        result.TotalCount = Count(activate, condition);
 
-            result.Message = result.TotalCount > 0
-                ? new MessageViewModel { Status = Statuses.Success }
-                : new MessageViewModel { Status = Statuses.Warning, Message = Messages.NotFoundAnyRecords };
-            return result;
-        }
-        catch (Exception ex)
-        {
-            _log.ExceptionLog(ex, MethodBase.GetCurrentMethod().GetSourceName());
-            result.Message = new MessageViewModel { Status = Statuses.Error, Message = _log.GetExceptionMessage(ex) };
-            return result;
-        }
-    }
+    //        result.Message = result.TotalCount > 0
+    //            ? new MessageViewModel { Status = Statuses.Success }
+    //            : new MessageViewModel { Status = Statuses.Warning, Message = Messages.NotFoundAnyRecords };
+    //        return result;
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        _log.ExceptionLog(ex, MethodBase.GetCurrentMethod().GetSourceName());
+    //        result.Message = new MessageViewModel { Status = Statuses.Error, Message = _log.GetExceptionMessage(ex) };
+    //        return result;
+    //    }
+    //}
 
     public HttpResponseMessage ExcelAll()
     {
         HttpResponseMessage result;
-        var items = SelectAll(null).List;
+        var items = GetAll(null).ToList();
         var list = _mapper.Map<List<ControllerActionExcelModel>>(items);
 
         result = _excel.GenerateExcel(list, null, false, "Report", OfficeOpenXml.Table.TableStyles.Medium2, "Sheet1", true, true);

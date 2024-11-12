@@ -185,30 +185,30 @@ public class UserPolicyService : Repository<UserPolicy, UserPolicyViewModel>, IU
         }
     }
 
-    public override ResultViewModel<UserPolicyViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
-    {
-        var result = new ResultViewModel<UserPolicyViewModel>();
-        try
-        {
-            var items = GetAll(activate, null, pageNumber, pageSize);
-            result.List = MapToViewModel(items);
+    //public override ResultViewModel<UserPolicyViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
+    //{
+    //    var result = new ResultViewModel<UserPolicyViewModel>();
+    //    try
+    //    {
+    //        var items = GetAll(activate, null, pageNumber, pageSize);
+    //        result.List = MapToViewModel(items);
 
-            result.TotalCount = Count(activate);
+    //        result.TotalCount = Count(activate);
 
-            result.Message = result.TotalCount > 0
-                ? new MessageViewModel { Status = Statuses.Success }
-                : new MessageViewModel { Status = Statuses.Warning, Message = Messages.NotFoundAnyRecords };
-            return result;
-        }
-        catch (Exception ex)
-        {
-            _log.ExceptionLog(ex, MethodBase.GetCurrentMethod().GetSourceName());
-            var errors = new List<ErrorViewModel>();
-            errors.Add(new ErrorViewModel() { ErrorCode = ex.HResult.ToString(), ErrorMessage = _log.GetExceptionMessage(ex) });
-            result.Message = new MessageViewModel { Status = Statuses.Error, Message = Messages.UnknownException, Errors = errors };
-            return result;
-        }
-    }
+    //        result.Message = result.TotalCount > 0
+    //            ? new MessageViewModel { Status = Statuses.Success }
+    //            : new MessageViewModel { Status = Statuses.Warning, Message = Messages.NotFoundAnyRecords };
+    //        return result;
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        _log.ExceptionLog(ex, MethodBase.GetCurrentMethod().GetSourceName());
+    //        var errors = new List<ErrorViewModel>();
+    //        errors.Add(new ErrorViewModel() { ErrorCode = ex.HResult.ToString(), ErrorMessage = _log.GetExceptionMessage(ex) });
+    //        result.Message = new MessageViewModel { Status = Statuses.Error, Message = Messages.UnknownException, Errors = errors };
+    //        return result;
+    //    }
+    //}
 
 
 

@@ -52,33 +52,33 @@ public class RoleClaimService : Repository<RoleClaim, RoleClaimViewModel>, IRole
         return result;
     }
 
-    public override ResultViewModel<RoleClaimViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
-    {
-        var result = new ResultViewModel<RoleClaimViewModel>();
-        try
-        {
-            var items = GetAll(activate, x => string.IsNullOrWhiteSpace(filter), pageNumber, pageSize);
-            result.List = MapToViewModel(items);
+    //public override ResultViewModel<RoleClaimViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
+    //{
+    //    var result = new ResultViewModel<RoleClaimViewModel>();
+    //    try
+    //    {
+    //        var items = GetAll(activate, x => string.IsNullOrWhiteSpace(filter), pageNumber, pageSize);
+    //        result.List = MapToViewModel(items);
 
-            result.TotalCount = Count(activate, x => string.IsNullOrWhiteSpace(filter));
+    //        result.TotalCount = Count(activate, x => string.IsNullOrWhiteSpace(filter));
 
-            result.Message = result.TotalCount > 0
-                ? new MessageViewModel { Status = Statuses.Success }
-                : new MessageViewModel { Status = Statuses.Warning, Message = Messages.NotFoundAnyRecords };
-            return result;
-        }
-        catch (Exception ex)
-        {
-            _log.ExceptionLog(ex, MethodBase.GetCurrentMethod().GetSourceName());
-            result.Message = new MessageViewModel { Status = Statuses.Error, Message = _log.GetExceptionMessage(ex) };
-            return result;
-        }
-    }
+    //        result.Message = result.TotalCount > 0
+    //            ? new MessageViewModel { Status = Statuses.Success }
+    //            : new MessageViewModel { Status = Statuses.Warning, Message = Messages.NotFoundAnyRecords };
+    //        return result;
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        _log.ExceptionLog(ex, MethodBase.GetCurrentMethod().GetSourceName());
+    //        result.Message = new MessageViewModel { Status = Statuses.Error, Message = _log.GetExceptionMessage(ex) };
+    //        return result;
+    //    }
+    //}
 
     public HttpResponseMessage ExcelAll()
     {
         HttpResponseMessage result;
-        var items = SelectAll(null).List;
+        var items = GetAll(null).ToList();
         var list = _mapper.Map<List<RoleClaimExcelModel>>(items);
 
         result = _excel.GenerateExcel(list, null, false, "Report", OfficeOpenXml.Table.TableStyles.Medium2, "Sheet1", true, true);

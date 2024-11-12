@@ -27,42 +27,42 @@ public class PageService : Repository<Page, PageViewModel>, IPageService
         _excel = excel;
     }
 
-    public override ResultViewModel<PageViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
-    {
-        var result = new ResultViewModel<PageViewModel>();
-        try
-        {
-            IQueryable<Page> items;
-            Expression<Func<Page, bool>> condition = x => string.IsNullOrWhiteSpace(filter) || x.Title.Contains(filter);
-            if (!string.IsNullOrWhiteSpace(filter))
-            {
-                items = GetAll(activate, condition, pageNumber, pageSize);
-            }
-            else
-            {
-                items = GetAll(activate, null, pageNumber, pageSize);
-            }
-            result.List = MapToViewModel(items);
+    //public override ResultViewModel<PageViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
+    //{
+    //    var result = new ResultViewModel<PageViewModel>();
+    //    try
+    //    {
+    //        IQueryable<Page> items;
+    //        Expression<Func<Page, bool>> condition = x => string.IsNullOrWhiteSpace(filter) || x.Title.Contains(filter);
+    //        if (!string.IsNullOrWhiteSpace(filter))
+    //        {
+    //            items = GetAll(activate, condition, pageNumber, pageSize);
+    //        }
+    //        else
+    //        {
+    //            items = GetAll(activate, null, pageNumber, pageSize);
+    //        }
+    //        result.List = MapToViewModel(items);
 
-            result.TotalCount = Count(activate, condition);
+    //        result.TotalCount = Count(activate, condition);
 
-            result.Message = result.TotalCount > 0
-                ? new MessageViewModel { Status = Statuses.Success }
-                : new MessageViewModel { Status = Statuses.Warning, Message = Messages.NotFoundAnyRecords };
-            return result;
-        }
-        catch (Exception ex)
-        {
-            _log.ExceptionLog(ex, MethodBase.GetCurrentMethod().GetSourceName());
-            result.Message = new MessageViewModel { Status = Statuses.Error, Message = _log.GetExceptionMessage(ex) };
-            return result;
-        }
-    }
+    //        result.Message = result.TotalCount > 0
+    //            ? new MessageViewModel { Status = Statuses.Success }
+    //            : new MessageViewModel { Status = Statuses.Warning, Message = Messages.NotFoundAnyRecords };
+    //        return result;
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        _log.ExceptionLog(ex, MethodBase.GetCurrentMethod().GetSourceName());
+    //        result.Message = new MessageViewModel { Status = Statuses.Error, Message = _log.GetExceptionMessage(ex) };
+    //        return result;
+    //    }
+    //}
 
     public HttpResponseMessage ExcelAll()
     {
         HttpResponseMessage result;
-        var items = SelectAll(null).List;
+        var items = GetAll(null).ToList();
         var list = _mapper.Map<List<PageExcelModel>>(items);
 
         result = _excel.GenerateExcel(list, null, false, "Report", OfficeOpenXml.Table.TableStyles.Medium2, "Sheet1", true, true);

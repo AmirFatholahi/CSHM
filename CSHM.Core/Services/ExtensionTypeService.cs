@@ -61,39 +61,39 @@ public class ExtensionTypeService : Repository<ExtensionType, ExtensionTypeViewM
         }
     }
 
-    public override ResultViewModel<ExtensionTypeViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
-    {
-        var result = new ResultViewModel<ExtensionTypeViewModel>();
-        try
-        {
-            IQueryable<ExtensionType> items;
-            if (!string.IsNullOrWhiteSpace(filter))
-            {
-                items = GetAll(activate, x => string.IsNullOrWhiteSpace(filter) || x.Title.Contains(filter), pageNumber, pageSize);
-            }
-            else
-            {
-                items = GetAll(activate, null, pageNumber, pageSize);
-            }
+    //public override ResultViewModel<ExtensionTypeViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
+    //{
+    //    var result = new ResultViewModel<ExtensionTypeViewModel>();
+    //    try
+    //    {
+    //        IQueryable<ExtensionType> items;
+    //        if (!string.IsNullOrWhiteSpace(filter))
+    //        {
+    //            items = GetAll(activate, x => string.IsNullOrWhiteSpace(filter) || x.Title.Contains(filter), pageNumber, pageSize);
+    //        }
+    //        else
+    //        {
+    //            items = GetAll(activate, null, pageNumber, pageSize);
+    //        }
 
-            result.List = MapToViewModel(items);
+    //        result.List = MapToViewModel(items);
 
-            result.TotalCount = Count(activate, x => string.IsNullOrWhiteSpace(filter) || x.Title.Contains(filter));
+    //        result.TotalCount = Count(activate, x => string.IsNullOrWhiteSpace(filter) || x.Title.Contains(filter));
 
-            result.Message = result.TotalCount > 0
-                ? new MessageViewModel { Status = Statuses.Success }
-                : new MessageViewModel
-                { Status = Statuses.Warning, Message = Messages.NotFoundAnyRecords };
-            return result;
-        }
-        catch (Exception ex)
-        {
-            _log.ExceptionLog(ex, MethodBase.GetCurrentMethod()?.GetSourceName());
-            var errors = new List<ErrorViewModel>();
-            errors.Add(new ErrorViewModel() { ErrorCode = ex.HResult.ToString(), ErrorMessage = _log.GetExceptionMessage(ex) });
-            result.Message = new MessageViewModel { Status = Statuses.Error, Message = Messages.UnknownException, Errors = errors };
-            return result;
-        }
-    }
+    //        result.Message = result.TotalCount > 0
+    //            ? new MessageViewModel { Status = Statuses.Success }
+    //            : new MessageViewModel
+    //            { Status = Statuses.Warning, Message = Messages.NotFoundAnyRecords };
+    //        return result;
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        _log.ExceptionLog(ex, MethodBase.GetCurrentMethod()?.GetSourceName());
+    //        var errors = new List<ErrorViewModel>();
+    //        errors.Add(new ErrorViewModel() { ErrorCode = ex.HResult.ToString(), ErrorMessage = _log.GetExceptionMessage(ex) });
+    //        result.Message = new MessageViewModel { Status = Statuses.Error, Message = Messages.UnknownException, Errors = errors };
+    //        return result;
+    //    }
+    //}
 
 }

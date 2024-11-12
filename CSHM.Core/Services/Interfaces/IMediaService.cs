@@ -9,9 +9,9 @@ public interface IMediaService : IRepository<Media, MediaViewModel>
 {
     ResultViewModel<MediaViewModel> SelectAllByEntity<T>(bool? activate, int entityID, bool? isDefault = null, bool? showIsConfirmed = null, string? filter = null, int? pageNumber = null, int pageSize = 20);
 
-    ResultViewModel<MediaViewModel> SelectAll(bool? activate, string? filter = null, int? pageNumber = null, int pageSize = 20);
+ //   ResultViewModel<MediaViewModel> SelectAll(bool? activate, string? filter = null, int? pageNumber = null, int pageSize = 20);
 
-    ResultViewModel<MediaViewModel> SelectAll(string entityName, int entityID, bool? activate, string? filter = null, int? pageNumber = null, int pageSize = 20);
+   // ResultViewModel<MediaViewModel> SelectAll(string entityName, int entityID, bool? activate, string? filter = null, int? pageNumber = null, int pageSize = 20);
 
     List<ErrorViewModel> ValidateForm(Media entity);
 

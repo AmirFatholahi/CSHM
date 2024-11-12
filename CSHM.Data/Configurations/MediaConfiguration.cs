@@ -30,6 +30,18 @@ public class MediaConfiguration : IEntityTypeConfiguration<Media>
            .IsRequired()
            .OnDelete(DeleteBehavior.Restrict);
 
+        builder.HasOne(x => x.Blog)
+           .WithMany()
+           .HasForeignKey(x => x.BlogID)
+           .IsRequired()
+           .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasOne(x => x.Product)
+           .WithMany()
+           .HasForeignKey(x => x.ProductID)
+           .IsRequired()
+           .OnDelete(DeleteBehavior.Restrict);
+
         builder.Property(x => x.IsActive).IsRequired();
         builder.Property(x => x.IsDeleted).IsRequired();
         builder.Property(x => x.CreatorID).IsRequired();

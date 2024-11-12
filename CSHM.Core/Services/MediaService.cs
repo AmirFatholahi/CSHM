@@ -78,37 +78,6 @@ public class MediaService : Repository<Media, MediaViewModel>, IMediaService
         }
     }
 
-
-    public override ResultViewModel<MediaViewModel> SelectAll(bool? activate, string? filter = null, int? pageNumber = null, int pageSize = 20)
-    {
-        var result = new ResultViewModel<MediaViewModel>();
-        try
-        {
-            IQueryable<Media> items;
-            Expression<Func<Media, bool>> condition = x => string.IsNullOrWhiteSpace(filter) || x.DisplayName.Contains(filter) || x.FileName.Contains(filter);
-            items = GetAll(activate, condition, pageNumber, pageSize);
-            result.List = MapToViewModel(items);
-            foreach (var item in result.List)
-            {
-                var fileName = SetMedia(item);
-                item.Url = $"{_baseURL}media/{fileName}{item.ExtensionName}";
-            }
-
-            result.TotalCount = Count(activate, condition);
-
-            result.Message = result.TotalCount > 0
-                ? new MessageViewModel { Status = Statuses.Success }
-                : new MessageViewModel { Status = Statuses.Warning, Message = Messages.NotFoundAnyRecords };
-            return result;
-        }
-        catch (Exception ex)
-        {
-            _log.ExceptionLog(ex, MethodBase.GetCurrentMethod()?.GetSourceName());
-            result.Message = new MessageViewModel { Status = Statuses.Error, Message = _log.GetExceptionMessage(ex) };
-            return result;
-        }
-    }
-
     /// <summary>
     /// ایجاد نشانی تصویر در ردیس
     /// </summary>

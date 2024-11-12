@@ -22,6 +22,14 @@ namespace CSHM.Presentations.Media
 
         public string ExtensionTypeTitle { get; set; }
 
+        public int BlogID { get; set; }
+
+        public string BlogTitle { get; set; }
+
+        public int ProductID { get; set; }
+
+        public string ProductTitle { get; set; }
+
         public string FileName { get; set; }
 
         public string DisplayName { get; set; }

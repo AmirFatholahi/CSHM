@@ -541,7 +541,7 @@ public class UserHandler : IUserHandler
             if (user != null)
             {
 
-                if (user.NoNeedCaptcha == false && withoutCaptcha == true)
+                if ( withoutCaptcha == true)
                 {
                     _log.UserLog("CSHM", user.ID, "NEED_CAPTCHA", string.Empty, ip);
                     var result = new TokenViewModel

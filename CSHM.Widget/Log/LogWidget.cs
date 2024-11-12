@@ -161,6 +161,227 @@ public class LogWidget : ILogWidget, IDisposable
         return result;
     }
 
+    // ===================================================================================================================
+    // ===================================================================================================================
+    // ===================================================================================================================
+    // ===================================================================================================================
+    // ===================================================================================================================Entity Log
+
+
+    /// <summary>
+    /// لاگ اتفاقات موجودیت های بیزینسی
+    /// </summary>
+    /// <param name="documentID"></param>
+    /// <param name="action"></param>
+    /// <param name="ip"></param>
+    /// <param name="userID"></param>
+    /// <param name="logType"></param>
+    public async Task EntityLog(string entityName, int entityID, string action, int userID, string changedFields)
+    {
+        try
+        {
+            List<Task> tasks = new List<Task>();
+            if (_logType == LogType.Elastic)
+            {
+                tasks.Add(EntityLogInElastic(entityName, entityID, action, userID, changedFields));
+            }
+            else if (_logType == LogType.DataBase)
+            {
+                tasks.Add(EntityLogInDatabase(entityName, entityID, action, userID, changedFields));
+            }
+            else if (_logType == LogType.File)
+            {
+                EntityLogInFile(entityName, entityID, action, userID, changedFields);
+            }
+            else if (_logType == LogType.All)
+            {
+                tasks.Add(EntityLogInElastic(entityName, entityID, action, userID, changedFields));
+                tasks.Add(EntityLogInDatabase(entityName, entityID, action, userID, changedFields));
+                EntityLogInFile(entityName, entityID, action, userID, changedFields);
+            }
+
+            await Task.WhenAll(tasks);
+        }
+        catch (Exception ex)
+        {
+            EntityLogInFile(entityName, entityID, action, userID, changedFields);
+            ExceptionLogInFile(ex, MethodBase.GetCurrentMethod()?.GetSourceName(), 0);
+            Logger(MethodBase.GetCurrentMethod()?.GetSourceName());
+        }
+    }
+
+
+    private async Task EntityLogInDatabase(string entityName, int entityID, string action, int userID, string changedFields)
+    {
+        var parameters = new DynamicParameters();
+        parameters.Add("@System", "WLT");
+        parameters.Add("@EntityName", entityName);
+        parameters.Add("@EntityID", entityID);
+        parameters.Add("@Action", action);
+        parameters.Add("@UserID", userID);
+        parameters.Add("@EventDateTime", CalenderWidget.ToJalaliDateTime(DateTime.Now));
+        parameters.Add("@CreationDateTime", DateTime.Now);
+        parameters.Add("@ChangedFields", changedFields);
+        await _dapper.CallProcedureAsync<string>("sp_entityLog_Insert", parameters);
+    }
+
+    private void EntityLogInFile(string entityName, int entityID, string action, int userID, string changedFields)
+    {
+        var line = $"WLT-{entityName}-{entityID}-{action}-{userID}-J{CalenderWidget.ToJalaliDateTime(DateTime.Now)}-{DateTime.Now.ToString("u")}-{changedFields}";
+
+        lock (_lock)
+        {
+            if (!_disposed)
+                _stream.Append(DateTime.Now, "entities", line);
+        }
+    }
+
+    private async Task EntityLogInElastic(string entityName, int entityID, string action, int userID, string changedFields)
+    {
+        var record = new
+        {
+            ID = Guid.NewGuid(),
+            System = "WLT",
+            User = userID,
+            EntityName = entityName,
+            EntityID = entityID,
+            Action = action,
+            EventDateTime = "J" + CalenderWidget.ToJalaliDateTime(DateTime.Now),
+            CreationDateTime = DateTime.Now,
+            ChangedFields = changedFields
+        };
+        await _elastic.Create<dynamic>(record, "entitylogs");
+    }
+
+
+
+
+    // ===================================================================================================================
+    // ===================================================================================================================
+    // ===================================================================================================================
+    // ===================================================================================================================
+    // ===================================================================================================================User Log
+
+    /// <summary>
+    /// لاگ اتفاقات کاربر
+    /// </summary>
+    /// <param name="documentID"></param>
+    /// <param name="action"></param>
+    /// <param name="ip"></param>
+    /// <param name="actorID"></param>
+    /// <param name="logType"></param>
+    public async Task UserLog(string system, int userID, string action, string metaData, string ip)
+    {
+        try
+        {
+            List<Task> tasks = new List<Task>();
+            if (_logType == LogType.Elastic)
+            {
+                tasks.Add(UserLogInElastic(system, userID, action, metaData));
+            }
+            else if (_logType == LogType.DataBase)
+            {
+                tasks.Add(UserLogInDatabase(system, userID, action, metaData, ip));
+
+            }
+            else if (_logType == LogType.File)
+            {
+                UserLogInFile(system, userID, action, metaData, ip);
+            }
+            else if (_logType == LogType.All)
+            {
+                tasks.Add(UserLogInElastic(system, userID, action, metaData));
+                tasks.Add(UserLogInDatabase(system, userID, action, metaData, ip));
+                UserLogInFile(system, userID, action, metaData, ip);
+            }
+            await Task.WhenAll(tasks);
+
+        }
+        catch (Exception ex)
+        {
+            UserLogInFile(system, userID, action, metaData, ip);
+            UserLogInFile(system, userID, action, metaData, ip);
+            ExceptionLogInFile(ex, MethodBase.GetCurrentMethod()?.GetSourceName(), 0);
+            Logger(MethodBase.GetCurrentMethod().GetSourceName());
+        }
+    }
+
+    private async Task UserLogInDatabase(int userID, string action, string metaData)
+    {
+        var parameters = new DynamicParameters();
+        parameters.Add("@System", "WLT");
+        parameters.Add("@UserID", userID);
+        parameters.Add("@Action", action);
+        parameters.Add("@MetaData", metaData);
+        parameters.Add("@EventDateTime", CalenderWidget.ToJalaliDateTime(DateTime.Now));
+        parameters.Add("@CreationDateTime", DateTime.Now);
+        await _dapper.CallProcedureAsync<string>("sp_userLog_Insert", parameters);
+    }
+
+    private async Task UserLogInDatabase(string system, int userID, string action, string metaData, string ip)
+    {
+        var parameters = new DynamicParameters();
+        parameters.Add("@System", system);
+        parameters.Add("@UserID", userID);
+        parameters.Add("@Action", action);
+        parameters.Add("@MetaData", metaData);
+        parameters.Add("@EventDateTime", CalenderWidget.ToJalaliDateTime(DateTime.Now));
+        parameters.Add("@UserIP", ip);
+        parameters.Add("@CreationDateTime", DateTime.Now);
+        await _dapper.CallProcedureAsync<string>("sp_userLog_Insert", parameters);
+    }
+
+    private void UserLogInFile(string system, int userID, string action, string metaData, string ip)
+    {
+        var line =
+               $"{system}-{userID}-{action}-{metaData}-{ip}-J{CalenderWidget.ToJalaliDateTime(DateTime.Now)}-{DateTime.Now.ToString("u")}";
+
+        lock (_lock)
+        {
+            if (!_disposed)
+                _stream.Append(DateTime.Now, "users", line);
+        }
+    }
+
+    private async Task UserLogInElastic(string system, int userID, string action, string metaData)
+    {
+        var record = new { ID = Guid.NewGuid(), System = system, User = userID, Action = action, MetaData = metaData, EventDateTime = "J" + CalenderWidget.ToJalaliDateTime(DateTime.Now), CreationDateTime = DateTime.Now };
+        await _elastic.Create<dynamic>(record, "userlogs");
+    }
+
+
+
+    // ===================================================================================================================
+    // ===================================================================================================================
+    // ===================================================================================================================
+    // ===================================================================================================================
+    // =================================================================================================================== Password Log
+
+    public async Task PasswordLog(int userID, string hashedPassword, string ip)
+    {
+        var parameters = new DynamicParameters();
+        parameters.Add("@userID", userID);
+        parameters.Add("@hashedPassword", hashedPassword);
+        await _dapper.CallProcedureAsync<string>("sp_passwordLog_insert", parameters);
+
+        await UserLogInDatabase("WLT", userID, "USER_ResetPassword", "", ip);
+    }
+
+
+    public int GetLatestPasswordLog(int userID, string hashedPassword)
+    {
+        var parameters = new DynamicParameters();
+        parameters.Add("@userID", userID);
+        parameters.Add("@hashedPassword", hashedPassword);
+        var result = _dapper.CallProcedure<int>("sp_getLatestPasswordsOfUser", parameters);
+        return result[0];
+    }
+
+
+
+
+
+
 
     /// <summary>
     /// دریافت پیام ناشی از استثنای پیشامد
@@ -178,6 +399,21 @@ public class LogWidget : ILogWidget, IDisposable
 # endif
     }
 
+    /// <summary>
+    /// دریافت پیام ناشی از استثنای پیشامد
+    /// </summary>
+    /// <param name="ex"></param>
+    /// <returns></returns>
+    public string GetExceptionHResult(Exception ex)
+    {
+#if DEBUG
+        var result = ex.HResult.ToString();
+        return result;
+#else
+            var result = "کد خطای ناشناخته";
+            return result;
+# endif
+    }
     private void Logger(string source)
     {
         var line =

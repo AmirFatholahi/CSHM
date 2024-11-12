@@ -15,15 +15,15 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(x => x.FirstName).IsRequired().HasMaxLength(30);
         builder.Property(x => x.FullName).IsRequired().HasMaxLength(150);
         builder.Property(x => x.AliasName).IsRequired().HasMaxLength(150);
-        builder.Property(x => x.FatherName).IsRequired().HasMaxLength(30);
+       // builder.Property(x => x.FatherName).IsRequired().HasMaxLength(30);
         builder.Property(x => x.RegDate).IsRequired().HasMaxLength(10);
         builder.Property(x => x.RegNumber).IsRequired().HasMaxLength(20);
         builder.Property(x => x.UserName).IsRequired().HasMaxLength(250);
         builder.Property(x => x.PostalCode).HasMaxLength(13);
         builder.Property(x => x.Address).HasMaxLength(500);
-        builder.Property(x => x.Avatar).IsRequired(false);
+       // builder.Property(x => x.Avatar).IsRequired(false);
         builder.Property(x => x.SecretKey).IsRequired().HasMaxLength(100);
-        builder.Property(x => x.Website).IsRequired(false).HasMaxLength(250);
+      //  builder.Property(x => x.Website).IsRequired(false).HasMaxLength(250);
         builder.Property(x => x.Cellphone).IsRequired(false).HasMaxLength(11);
         builder.Property(x => x.Phone).IsRequired(false).HasMaxLength(12);
         builder.Property(x => x.Email).IsRequired(false).HasMaxLength(250);
@@ -36,7 +36,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(x => x.LockoutEnabled).IsRequired();
         builder.Property(x => x.AccessFailedCount).IsRequired();
 
-        builder.Property(x => x.ExporterID).HasDefaultValue(0);
+       // builder.Property(x => x.ExporterID).HasDefaultValue(0);
 
         //builder.Ignore(e => e.Email);
         builder.Ignore(e => e.NormalizedEmail);
@@ -50,11 +50,11 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
 
 
 
-        builder.HasOne(x => x.Exporter)
-         .WithMany()
-         .HasForeignKey(x => x.ExporterID)
-         .IsRequired()
-         .OnDelete(DeleteBehavior.Restrict);
+        //builder.HasOne(x => x.Exporter)
+        // .WithMany()
+        // .HasForeignKey(x => x.ExporterID)
+        // .IsRequired()
+        // .OnDelete(DeleteBehavior.Restrict);
 
 
         builder.Property(x => x.IsActive).IsRequired();
