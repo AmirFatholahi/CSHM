@@ -21,6 +21,7 @@ namespace CSHM.Data.Configurations
             builder.Property(x => x.PublishDate).IsRequired(false).HasMaxLength(10);
             builder.Property(x => x.MetaDercreption).IsRequired(false).HasMaxLength(4000);
             builder.Property(x => x.Summary).IsRequired(false).HasMaxLength(2000);
+            builder.Property(x => x.ProductCode).IsRequired().HasMaxLength(10);
 
 
             builder.HasOne(x => x.Publisher)

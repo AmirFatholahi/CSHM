@@ -16,6 +16,7 @@ namespace CSHM.Data.Configurations
             builder.ToTable(name: "ProductTypes");
 
             builder.HasKey(x => x.ID);
+            builder.Property(x => x.Title).IsRequired().HasMaxLength(10);
             builder.Property(x => x.Title).IsRequired().HasMaxLength(100);
 
 

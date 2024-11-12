@@ -31,11 +31,17 @@ namespace CSHM.Domain
 
         public long Price { get; set; }
 
+        public long MaxPrice { get; set; }
+
+        public long MinPrice { get; set; }
+
         public long BeforePrice { get; set; }
         
         public decimal StudyTime { get; set; } // زمان مطالعه بر حسب ساعت
 
         public string ISBN { get; set; }
+
+        public string Barcode { get; set; }
 
         public int PublisheYear { get; set; } // سال انتشار
 
