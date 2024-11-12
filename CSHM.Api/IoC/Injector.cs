@@ -62,6 +62,7 @@ public static class Injector
         service.AddScoped<IProductLableService , ProductLableService>();
         service.AddScoped<IProductCommentService , ProductCommentService>();
         service.AddScoped<IProductOccupationService , ProductOccupationService>();
+        service.AddScoped<IProductPublisherService , ProductPublisherService>();
         
         service.AddScoped<IMediaTypeService , MediaTypeService>();
 

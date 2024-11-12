@@ -18,6 +18,7 @@ using CSHM.Presentation.Language;
 using CSHM.Presentation.Category;
 using CSHM.Presentation.Size;
 using CSHM.Presentation.Cover;
+using CSHM.Domain.Models;
 
 namespace CSHM.Core.Mapping;
 
@@ -103,6 +104,7 @@ public class MyMapper : Profile
         CreateMap<ProductLable , ProductLableViewModel>();
         CreateMap<ProductComment , ProductCommentViewModel>();
         CreateMap<ProductOccupation , ProductOccupationViewModel>();
+        CreateMap<ProductPublisher , ProductPublisherViewModel>();
 
         //===============================================
         //===============================================
