@@ -31,6 +31,12 @@ public static class Injector
     {
         //============================================================ SERVICES
         service.AddScoped<IUserService, UserService>();
+
+        service.AddScoped<ICalenderDimensionService , CalenderDimensionService>();
+
+        service.AddScoped<ISettingService , SettingService>();
+
+        service.AddScoped<IExtensionTypeService , ExtensionTypeService>();
         
         service.AddScoped<IControllerActionService, ControllerActionService>();
         
@@ -67,6 +73,7 @@ public static class Injector
         service.AddScoped<IProductPublisherService , ProductPublisherService>();
         
         service.AddScoped<IMediaTypeService , MediaTypeService>();
+        service.AddScoped<IMediaService, MediaService>();
 
         service.AddScoped<IOccupationService , OccupationService>();
 
