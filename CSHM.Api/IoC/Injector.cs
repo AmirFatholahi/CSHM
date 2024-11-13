@@ -162,7 +162,7 @@ public static class Injector
 
         service.AddSingleton<IRestWidget, RestWidget>();
 
-        service.AddSingleton<IElasticWidget, ElasticWidget>();
+        //service.AddSingleton<IElasticWidget, ElasticWidget>();
 
 
         service.AddSingleton<IDapperWidget, DapperWidget>();
@@ -173,14 +173,14 @@ public static class Injector
         service.AddSingleton<ITicketumWidget, TicketumWidget>();
 
 
-        service.AddSingleton<IElasticClient, ElasticClient>(serviceProvider =>
-        {
-            var url = PublicExtension.GetConfigValue<string>("ELKConfiguration:URL");
-            var settings = new ConnectionSettings(new Uri(url))
-                .PrettyJson();
+        //service.AddSingleton<IElasticClient, ElasticClient>(serviceProvider =>
+        //{
+        //    var url = PublicExtension.GetConfigValue<string>("ELKConfiguration:URL");
+        //    var settings = new ConnectionSettings(new Uri(url))
+        //        .PrettyJson();
 
-            return new ElasticClient(settings);
-        });
+        //    return new ElasticClient(settings);
+        //});
 
 
 

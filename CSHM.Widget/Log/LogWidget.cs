@@ -23,10 +23,10 @@ public class LogWidget : ILogWidget, IDisposable
     private bool _disposed;
     private readonly IHttpContextAccessor _accessor;
     private readonly IDapperWidget _dapper;
-    private readonly IElasticWidget _elastic;
+    //private readonly IElasticWidget _elastic;
     private readonly LogType _logType;
 
-    public LogWidget(IHttpContextAccessor accessor, IDapperWidget dapper, IElasticWidget elastic)
+    public LogWidget(IHttpContextAccessor accessor, IDapperWidget dapper/*, IElasticWidget elastic*/)
     {
         var filePath = ConfigWidget.GetConfigValue<string>("FilePathes:LogFilePath");
         _accessor = accessor;
@@ -35,7 +35,7 @@ public class LogWidget : ILogWidget, IDisposable
         _lock = new object();
         _disposed = false;
         _dapper = dapper;
-        _elastic = elastic;
+        //_elastic = elastic;
         _logType = ConfigWidget.GetConfigValue<LogType>("LogConfiguration:LogType");
     }
 
@@ -63,7 +63,7 @@ public class LogWidget : ILogWidget, IDisposable
 
             if (_logType == LogType.Elastic)
             {
-                tasks.Add(ExceptionLogInElastic(info[0], info[1], info[2], source ?? info[3], userID));
+               // tasks.Add(ExceptionLogInElastic(info[0], info[1], info[2], source ?? info[3], userID));
             }
             else if (_logType == LogType.DataBase)
             {
@@ -75,7 +75,7 @@ public class LogWidget : ILogWidget, IDisposable
             }
             else if (_logType == LogType.All)
             {
-                tasks.Add(ExceptionLogInElastic(info[0], info[1], info[2], source ?? info[3], userID));
+               // tasks.Add(ExceptionLogInElastic(info[0], info[1], info[2], source ?? info[3], userID));
                 tasks.Add(ExceptionLogInDatabase(info[0], info[1], info[2], source ?? info[3], userID));
                 ExceptionLogInFile(info[0], info[1], info[2], source ?? info[3], userID);
             }
@@ -130,11 +130,11 @@ public class LogWidget : ILogWidget, IDisposable
         }
     }
 
-    private async Task ExceptionLogInElastic(string message, string innerMessage, string code, string? source, int userID)
-    {
-        var record = new { ID = Guid.NewGuid(), System = "ACTS", User = userID, Message = message, InnerMessage = innerMessage, Code = code, Source = source, ExceptionDateTime = "J" + CalenderWidget.ToJalaliDateTime(DateTime.Now), CreationDateTime = DateTime.Now };
-        await _elastic.Create<dynamic>(record, "exceptionlogs");
-    }
+    //private async Task ExceptionLogInElastic(string message, string innerMessage, string code, string? source, int userID)
+    //{
+    //    var record = new { ID = Guid.NewGuid(), System = "ACTS", User = userID, Message = message, InnerMessage = innerMessage, Code = code, Source = source, ExceptionDateTime = "J" + CalenderWidget.ToJalaliDateTime(DateTime.Now), CreationDateTime = DateTime.Now };
+    //    await _elastic.Create<dynamic>(record, "exceptionlogs");
+    //}
 
 
     private List<string> GetExceptionInformations(Exception exception)
@@ -183,7 +183,7 @@ public class LogWidget : ILogWidget, IDisposable
             List<Task> tasks = new List<Task>();
             if (_logType == LogType.Elastic)
             {
-                tasks.Add(EntityLogInElastic(entityName, entityID, action, userID, changedFields));
+               // tasks.Add(EntityLogInElastic(entityName, entityID, action, userID, changedFields));
             }
             else if (_logType == LogType.DataBase)
             {
@@ -195,7 +195,7 @@ public class LogWidget : ILogWidget, IDisposable
             }
             else if (_logType == LogType.All)
             {
-                tasks.Add(EntityLogInElastic(entityName, entityID, action, userID, changedFields));
+               // tasks.Add(EntityLogInElastic(entityName, entityID, action, userID, changedFields));
                 tasks.Add(EntityLogInDatabase(entityName, entityID, action, userID, changedFields));
                 EntityLogInFile(entityName, entityID, action, userID, changedFields);
             }
@@ -236,22 +236,22 @@ public class LogWidget : ILogWidget, IDisposable
         }
     }
 
-    private async Task EntityLogInElastic(string entityName, int entityID, string action, int userID, string changedFields)
-    {
-        var record = new
-        {
-            ID = Guid.NewGuid(),
-            System = "WLT",
-            User = userID,
-            EntityName = entityName,
-            EntityID = entityID,
-            Action = action,
-            EventDateTime = "J" + CalenderWidget.ToJalaliDateTime(DateTime.Now),
-            CreationDateTime = DateTime.Now,
-            ChangedFields = changedFields
-        };
-        await _elastic.Create<dynamic>(record, "entitylogs");
-    }
+    //private async Task EntityLogInElastic(string entityName, int entityID, string action, int userID, string changedFields)
+    //{
+    //    var record = new
+    //    {
+    //        ID = Guid.NewGuid(),
+    //        System = "WLT",
+    //        User = userID,
+    //        EntityName = entityName,
+    //        EntityID = entityID,
+    //        Action = action,
+    //        EventDateTime = "J" + CalenderWidget.ToJalaliDateTime(DateTime.Now),
+    //        CreationDateTime = DateTime.Now,
+    //        ChangedFields = changedFields
+    //    };
+    //    await _elastic.Create<dynamic>(record, "entitylogs");
+    //}
 
 
 
@@ -277,7 +277,7 @@ public class LogWidget : ILogWidget, IDisposable
             List<Task> tasks = new List<Task>();
             if (_logType == LogType.Elastic)
             {
-                tasks.Add(UserLogInElastic(system, userID, action, metaData));
+                //tasks.Add(UserLogInElastic(system, userID, action, metaData));
             }
             else if (_logType == LogType.DataBase)
             {
@@ -290,7 +290,7 @@ public class LogWidget : ILogWidget, IDisposable
             }
             else if (_logType == LogType.All)
             {
-                tasks.Add(UserLogInElastic(system, userID, action, metaData));
+                //tasks.Add(UserLogInElastic(system, userID, action, metaData));
                 tasks.Add(UserLogInDatabase(system, userID, action, metaData, ip));
                 UserLogInFile(system, userID, action, metaData, ip);
             }
@@ -343,11 +343,11 @@ public class LogWidget : ILogWidget, IDisposable
         }
     }
 
-    private async Task UserLogInElastic(string system, int userID, string action, string metaData)
-    {
-        var record = new { ID = Guid.NewGuid(), System = system, User = userID, Action = action, MetaData = metaData, EventDateTime = "J" + CalenderWidget.ToJalaliDateTime(DateTime.Now), CreationDateTime = DateTime.Now };
-        await _elastic.Create<dynamic>(record, "userlogs");
-    }
+    //private async Task UserLogInElastic(string system, int userID, string action, string metaData)
+    //{
+    //    var record = new { ID = Guid.NewGuid(), System = system, User = userID, Action = action, MetaData = metaData, EventDateTime = "J" + CalenderWidget.ToJalaliDateTime(DateTime.Now), CreationDateTime = DateTime.Now };
+    //    await _elastic.Create<dynamic>(record, "userlogs");
+    //}
 
 
 
