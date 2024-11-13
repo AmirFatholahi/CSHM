@@ -575,19 +575,7 @@ public class UserHandler : IUserHandler
 
 
                 userID = user.ID;
-                // ستاد بانک کشاورزی
-                //if (user.UserTypeID == 10)
-                //{
-                //    var ldapRes = _channelHandler.LoginByLDAP(entity);
-                //    if (ldapRes.Status == Statuses.Success)
-                //    {
-                //        isAuthenticated = true;
-                //    }
-                //}
-                //else
-                //{
-                //    isAuthenticated = _userManager.CheckPasswordAsync(user, entity.Password).Result;
-                //}
+
 
                 if (user == null || isAuthenticated == false)
                 {
