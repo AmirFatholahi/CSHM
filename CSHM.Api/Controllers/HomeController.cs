@@ -1,23 +1,12 @@
-﻿using CSHM.Api.Extensions;
-using CSHM.Widget.Config;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
-namespace CSHM.Api.Controllers;
-
-public class HomeController : Controller
+namespace CSHM.Api.Controllers
 {
-    private readonly string _baseURL;
-
-    public HomeController()
+    public class HomeController : Controller
     {
-       // _baseURL = ConfigWidget.GetConfigValue<string>("PublishedServerAddresses:0:BaseUrl");
-    }
-
-    public IActionResult Index()
-    {
-       // ViewBag.Version = PublicExtension.GetVersion();
-       // ViewBag.BaseUrl = _baseURL;
-
-        return View();
+        public IActionResult Index()
+        {
+            return View();
+        }
     }
 }
