@@ -120,6 +120,7 @@ public class MyMapper : Profile
 
         CreateMap<Person , PersonViewModel>();
         CreateMap<PersonOccupation , PersonOccupationViewModel>();
+        CreateMap<PersonType , PersonTypeViewModel>();
 
         //===============================================
         //===============================================

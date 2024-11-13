@@ -79,6 +79,7 @@ public static class Injector
 
         service.AddScoped<IPersonService , PersonService>();
         service.AddScoped<IPersonOccupationService , PersonOccupationService>();
+        service.AddScoped<IPersonTypeService , PersonTypeService>();
 
         service.AddScoped<ILableService , LableService>();
 

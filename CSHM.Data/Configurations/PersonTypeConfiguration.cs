@@ -9,20 +9,14 @@ using System.Threading.Tasks;
 
 namespace CSHM.Data.Configurations
 {
-    public class ProductTypeConfiguration : IEntityTypeConfiguration<ProductType>
+    public class PersonTypeConfiguration : IEntityTypeConfiguration<PersonType>
     {
-        public void Configure(EntityTypeBuilder<ProductType> builder)
+        public void Configure(EntityTypeBuilder<PersonType> builder)
         {
-            builder.ToTable(name: "ProductTypes");
+            builder.ToTable(name: "PersonTypes");
 
             builder.HasKey(x => x.ID);
-            builder.Property(x => x.ProductTypeCode).IsRequired().HasMaxLength(10);
             builder.Property(x => x.Title).IsRequired().HasMaxLength(100);
-
-
-
-
-
 
             builder.Property(x => x.IsActive).IsRequired();
             builder.Property(x => x.IsDeleted).IsRequired();
