@@ -90,6 +90,8 @@ public static class Injector
         service.AddScoped<ISizeTypeService , SizeTypeService>();
 
         service.AddScoped<ICoverTypeService , CoverTypeService>();
+
+        service.AddScoped<IKowsarService , KowsarService>();
         //============================================================ Handlers
         service.AddScoped<IUserHandler, UserHandler>();
         
@@ -98,6 +100,7 @@ public static class Injector
     
 
         service.AddScoped<IMediaHandler, MediaHandler>();
+        service.AddScoped<IKowsarHandler , KowsarHandler>();
 
 
 
