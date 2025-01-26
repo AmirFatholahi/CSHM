@@ -10,6 +10,10 @@ namespace CSHM.Core.Handlers.Interfaces
 {
     public interface IKowsarHandler
     {
-        public MessageViewModel InsertToGood(GoodViewModel goodViewModel);
+        public MessageViewModel InsertToGood(List<GoodViewModel> goodViewModel);
+
+        public MessageViewModel DeleteGood(List<GoodViewModel> goodViewModel);
+
+        public MessageViewModel Common(List<CommonViewModel> commonViewModel);
     }
 }
