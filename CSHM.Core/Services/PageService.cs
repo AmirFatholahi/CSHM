@@ -27,37 +27,65 @@ public class PageService : Repository<Page, PageViewModel>, IPageService
         _excel = excel;
     }
 
-    //public override ResultViewModel<PageViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
-    //{
-    //    var result = new ResultViewModel<PageViewModel>();
-    //    try
-    //    {
-    //        IQueryable<Page> items;
-    //        Expression<Func<Page, bool>> condition = x => string.IsNullOrWhiteSpace(filter) || x.Title.Contains(filter);
-    //        if (!string.IsNullOrWhiteSpace(filter))
-    //        {
-    //            items = GetAll(activate, condition, pageNumber, pageSize);
-    //        }
-    //        else
-    //        {
-    //            items = GetAll(activate, null, pageNumber, pageSize);
-    //        }
-    //        result.List = MapToViewModel(items);
+    public  ResultViewModel<PageViewModel> SelectAll(bool? activate, int changeTypeID, int? pageNumber = null, int pageSize = 20)
+    {
+        var result = new ResultViewModel<PageViewModel>();
+        try
+        {
+            IQueryable<Page> items;
+            Expression<Func<Page, bool>> condition = x => x.ChannelTypeID == changeTypeID;
 
-    //        result.TotalCount = Count(activate, condition);
+                items = GetAll(activate, condition, pageNumber, pageSize);
 
-    //        result.Message = result.TotalCount > 0
-    //            ? new MessageViewModel { Status = Statuses.Success }
-    //            : new MessageViewModel { Status = Statuses.Warning, Message = Messages.NotFoundAnyRecords };
-    //        return result;
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        _log.ExceptionLog(ex, MethodBase.GetCurrentMethod().GetSourceName());
-    //        result.Message = new MessageViewModel { Status = Statuses.Error, Message = _log.GetExceptionMessage(ex) };
-    //        return result;
-    //    }
-    //}
+            result.List = MapToViewModel(items);
+
+            result.TotalCount = Count(activate, condition);
+
+            result.Message = result.TotalCount > 0
+                ? new MessageViewModel { Status = Statuses.Success }
+                : new MessageViewModel { Status = Statuses.Warning, Message = Messages.NotFoundAnyRecords };
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _log.ExceptionLog(ex, MethodBase.GetCurrentMethod().GetSourceName());
+            result.Message = new MessageViewModel { Status = Statuses.Error, Message = _log.GetExceptionMessage(ex) };
+            return result;
+        }
+    }
+
+
+    public  ResultViewModel<PageViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
+    {
+        var result = new ResultViewModel<PageViewModel>();
+        try
+        {
+            IQueryable<Page> items;
+            Expression<Func<Page, bool>> condition = x => string.IsNullOrWhiteSpace(filter) || x.Title.Contains(filter);
+            if (!string.IsNullOrWhiteSpace(filter))
+            {
+                items = GetAll(activate, condition, pageNumber, pageSize);
+            }
+            else
+            {
+                items = GetAll(activate, null, pageNumber, pageSize);
+            }
+            result.List = MapToViewModel(items);
+
+            result.TotalCount = Count(activate, condition);
+
+            result.Message = result.TotalCount > 0
+                ? new MessageViewModel { Status = Statuses.Success }
+                : new MessageViewModel { Status = Statuses.Warning, Message = Messages.NotFoundAnyRecords };
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _log.ExceptionLog(ex, MethodBase.GetCurrentMethod().GetSourceName());
+            result.Message = new MessageViewModel { Status = Statuses.Error, Message = _log.GetExceptionMessage(ex) };
+            return result;
+        }
+    }
 
     public HttpResponseMessage ExcelAll()
     {

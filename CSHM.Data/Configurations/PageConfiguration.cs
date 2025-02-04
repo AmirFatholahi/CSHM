@@ -24,6 +24,13 @@ public class PageConfiguration : IEntityTypeConfiguration<Page>
            .IsRequired(false)
            .OnDelete(DeleteBehavior.Restrict);
 
+
+        builder.HasOne(x => x.ChannelType)
+         .WithMany()
+         .HasForeignKey(x => x.ChannelTypeID)
+         .IsRequired()
+         .OnDelete(DeleteBehavior.Restrict);
+
         builder.Property(x => x.IsActive).IsRequired();
         builder.Property(x => x.IsDeleted).IsRequired();
         builder.Property(x => x.CreatorID).IsRequired();

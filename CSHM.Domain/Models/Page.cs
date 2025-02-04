@@ -10,6 +10,8 @@ public class Page : IEntity
 
     public int? ParentID { get; set; }
 
+    public int ChannelTypeID { get; set; }
+
     public string Title { get; set; }
 
     public string Name { get; set; }
@@ -35,6 +37,8 @@ public class Page : IEntity
     public DateTime? ModificationDateTime { get; set; }
 
     public virtual Page Parent { get; set; }
+
+    public virtual ChannelType ChannelType { get; set; }
 
     public virtual ICollection<Page> Children { get; set; }
 
