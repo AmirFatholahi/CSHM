@@ -39,7 +39,13 @@ public static class Injector
         service.AddScoped<IExtensionTypeService , ExtensionTypeService>();
         
         service.AddScoped<IControllerActionService, ControllerActionService>();
-        
+
+
+        service.AddScoped<INotificationService, NotificationService>();
+        service.AddScoped<INotificationDraftService, NotificationDraftService>();
+        service.AddScoped<INotificationOwnerService, NotificationOwnerService>();
+        service.AddScoped<INotificationTypeService, NotificationTypeService>();
+
         service.AddScoped<IPageService, PageService>();
         
         service.AddScoped<IPolicyService, PolicyService>();
@@ -96,8 +102,8 @@ public static class Injector
         service.AddScoped<IUserHandler, UserHandler>();
         
         service.AddScoped<ICalenderHandler, CalenderHandler>();
-      
-    
+
+        service.AddScoped<INotificationHandler, NotificationHandler>();
 
         service.AddScoped<IMediaHandler, MediaHandler>();
         service.AddScoped<IKowsarHandler , KowsarHandler>();

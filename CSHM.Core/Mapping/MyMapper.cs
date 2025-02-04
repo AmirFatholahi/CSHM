@@ -19,6 +19,7 @@ using CSHM.Presentation.Category;
 using CSHM.Presentation.Size;
 using CSHM.Presentation.Cover;
 using CSHM.Domain.Models;
+using CSHM.Presentation.Notification;
 
 namespace CSHM.Core.Mapping;
 
@@ -151,5 +152,13 @@ public class MyMapper : Profile
         //===============================================Cover
 
         CreateMap<CoverType, CoverTypeViewModel>();
+
+        //=============================================================== Notification
+        CreateMap<Notification, NotificationViewModel>()
+             .ForMember(x => x.NotificationTypeTitle, opt => opt.MapFrom(origin => origin.NotificationType.Title));
+
+        CreateMap<NotificationDraft, NotificationDraftViewModel>();
+        CreateMap<NotificationType, NotificationTypeViewModel>();
+        CreateMap<NotificationOwner, NotificationOwnerViewModel>();
     }
 }

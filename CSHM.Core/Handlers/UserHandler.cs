@@ -1,8 +1,6 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
 using System.Security.Claims;
-using System.Text;
-using Microsoft.AspNetCore.Hosting;
 using CSHM.Core.Handlers.Interfaces;
 using CSHM.Presentation.Base;
 using CSHM.Core.Services.Interfaces;
@@ -13,38 +11,17 @@ using CSHM.Widget.Method;
 using CSHM.Widget.OTP;
 using CSHM.Widget.Rest;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.IdentityModel.Logging;
-using Microsoft.IdentityModel.Tokens;
-using CSHM.Widget.Image;
 using CSHM.Widget.Config;
-using System.Security.Cryptography.X509Certificates;
-using CSHM.Widget.Security;
-using CSHM.Widget.Convertor;
-using Microsoft.AspNetCore.Http;
-using System.Drawing.Imaging;
-using StackExchange.Redis;
-using static System.Net.WebRequestMethods;
 using CSHM.Widget.Redis;
 using CSHM.Data.Context;
-using Microsoft.EntityFrameworkCore;
-using IdentityServer4.Models;
-using Xceed.Document.NET;
+
 using CSHM.Widget.Dapper;
-using Dapper;
 using AutoMapper;
-using System.Globalization;
-using CSHM.Widget.Calendar;
 using CSHM.Widget.Email;
-using Nest;
-using static Stimulsoft.Report.StiOptions.Export;
 using CSHM.Widget.Excel;
-using IdentityServer4.Test;
-using OfficeOpenXml.FormulaParsing.LexicalAnalysis;
-using RestSharp;
-using CSHM.Presentation.OTP;
 using CSHM.Presentation.Resources;
 using CSHM.Presentations.Login;
-using CSHM.Presentations.User;
+using CSHM.Core.Presentations.User;
 
 namespace CSHM.Core.Handlers;
 
@@ -203,7 +180,7 @@ public class UserHandler : IUserHandler
         var errors = new List<ErrorViewModel>();
         try
         {
-            if (entity.PersonTypeID == 1 && entity.UserTypeID == 5)
+            if (entity.UserTypeID == 5)
             {
                 if (entity.GenderTypeID <= 0 || entity.GenderTypeID > 2)
                 {
@@ -670,6 +647,21 @@ public class UserHandler : IUserHandler
     }
 
 
+
+    /// <summary>
+    /// خروج کاربر
+    /// </summary>
+    /// <param name="userID"></param>
+    /// <param name="ip"></param>
+    /// <returns></returns>
+    public MessageViewModel Logout(int userID, string ip)
+    {
+        MessageViewModel result = new MessageViewModel();
+        _log.UserLog("POS", userID, "USER_Logout", string.Empty, ip);
+        return result;
+    }
+
+
     /// <summary>
     /// خروج کاربر
     /// </summary>
@@ -762,6 +754,153 @@ public class UserHandler : IUserHandler
     }
 
 
+
+    /// <summary>
+    /// در یافت لیست کنترلر و اکشن های دارای دسترسی
+    /// متد اصلی
+    /// </summary>
+    /// <param name="userID">شناسه کاربر</param>
+    /// <param name="where">شرط</param>
+    /// <returns>لیست کنترلر و اکشن</returns>
+    public List<ControllerActionViewModel> GetControllerActions(int userID, Func<ControllerAction, bool> where = null)
+    {
+
+        var userQuery = _userService.GetByID(userID);
+        var controllerActionQuery = _controllerActionService.GetAll(null, null, 1, 10000, null, false, true);
+        var controllerAction = userQuery
+            .UserInRoles
+            .Where(ur => ur.IsActive && !ur.IsDeleted && (ur.ExpiryDate == null || ur.ExpiryDate > DateTime.Now))
+            .Select(ur => ur.Role)
+            .Where(r => r.IsActive && !r.IsDeleted)
+            .SelectMany(r => r.RoleClaims)
+            .Where(rc => rc.IsActive && !rc.IsDeleted)
+            .Join(controllerActionQuery,
+                rc => rc.ControllerActionCode,
+                ca => ca.Code,
+                (rc, ca) => ca);
+
+        if (where != null)
+            controllerAction = controllerAction.Where(where);
+
+        var controllerActionViewModel = controllerAction.Select(ca => new ControllerActionViewModel
+        {
+            ID = ca.ID,
+            ControllerName = ca.ControllerName,
+            ActionName = ca.ActionName,
+            Code = ca.Code,
+            PageID = ca.PageID,
+            Priority = ca.Priority,
+            TitleEn = ca.TitleEn,
+            TitleFa = ca.TitleFa,
+            IsActive = ca.IsActive,
+            Page = ca.Page
+        }).ToList();
+        return controllerActionViewModel;
+
+    }
+
+
+
+    /// <summary>
+    ///ساخت لیست صفحات
+    /// </summary>
+    /// <param name="userID">کاربر فعال</param>
+    /// <returns>لیست صفحات</returns>
+    public List<NavigationViewModel> GetNavigation(int userID, bool showAll = false)
+    {
+        List<NavigationViewModel> result = new List<NavigationViewModel>();
+        try
+        {
+            var controllerActions = GetControllerActions(userID);
+            var pages = controllerActions
+                .Where(ca => ca.TitleEn == "Access") //todo: Must Change to boolean varible
+                .Select(ca => ca.Page)
+                .Where(p => p != null && (showAll || p.IsMenu == true) && p.IsActive && !p.IsDeleted) //داخل پرانتز شرط جمع منطقی: اگر متغیر اول ترو بود آن اجرا وگرنه شرط دوم اجرا می شود
+                .Distinct()
+                .ToList();
+
+            var root = _pageService.GetAll(true, p => p.ParentID == null ).FirstOrDefault();
+
+            var navigationViewModel = new NavigationViewModel
+            {
+                ID = root.ID,
+                Title = root.Title,
+                Priority = root.Priority,
+                Icon = root.Icon,
+                IsMenu = root.IsMenu,
+                Name = root.Name,
+                ParentID = root.ParentID,
+                Path = root.Path,
+                IsActive = root.IsActive,
+                Children = GetChild(root.Children, pages),
+            };
+
+            result = navigationViewModel.Children.ToList();
+
+        }
+        catch (Exception ex)
+        {
+            _log.ExceptionLog(ex, MethodBase.GetCurrentMethod()?.GetSourceName(), userID);
+
+        }
+
+        return result;
+    }
+
+
+    /// <summary>
+    ///   ساخت لیست از صفحات به صورت فلت
+    /// </summary>
+    /// <param name="userID">کاربر فعال</param>
+    /// <returns>لیست صفحات</returns>
+    public List<PageViewModel> GetPages(int userID)
+    {
+        List<PageViewModel> result = new List<PageViewModel>();
+        try
+        {
+            var navigation = GetNavigation(userID, true);
+            result = GetPagesHierarkey(navigation);
+
+        }
+        catch (Exception ex)
+        {
+            _log.ExceptionLog(ex, MethodBase.GetCurrentMethod()?.GetSourceName(), userID);
+
+        }
+        return result;
+    }
+
+    /// <summary>
+    /// دریافت منوها
+    /// متد نهایی
+    /// </summary>
+    /// <param name="userID"></param>
+    /// <returns></returns>
+    public List<MenuViewModel> GetMenus(int userID)
+    {
+        var navigation = GetNavigation(userID, false);
+        var result = GenerateMenu(navigation);
+        return result;
+    }
+
+
+    /// <summary>
+    /// پروفایل فرد لاگین کننده
+    /// </summary>
+    /// <param name="userID"></param>
+    /// <returns></returns>
+    public ProfileViewModel GetProfile(int userID)
+    {
+        ProfileViewModel result = new ProfileViewModel();
+        var user = _userService.GetByID(userID);
+        if (user != null)
+        {
+            result.FullName = user.FullName;
+            result.Username = user.UserName;
+      //      result.Avatar = user.Avatar;
+        }
+        return result;
+    }
 
     #region Private Methods
 

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace POS.Api.Controllers;
+namespace CSHM.Api.Controllers;
 
 [Authorize]
 [ApiController]

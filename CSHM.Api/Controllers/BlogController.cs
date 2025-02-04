@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CSHM.Api.Controllers;
 
 
-[Authorize]
+
 [ApiController]
 
 public class BlogController : ControllerBase

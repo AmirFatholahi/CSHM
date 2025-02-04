@@ -4,8 +4,8 @@ using CSHM.Presentation.Base;
 using CSHM.Domain;
 using CSHM.Widget.Rest;
 using CSHM.Presentation.OTP;
-using CSHM.Presentations.User;
 using CSHM.Presentations.Login;
+using CSHM.Core.Presentations.User;
 
 namespace CSHM.Core.Handlers.Interfaces;
 
@@ -31,6 +31,8 @@ public interface IUserHandler
 
     public TokenViewModel? Login(LoginViewModel entity, string validAudience, bool withoutCaptcha, string ip);
 
+    MessageViewModel Logout(int userID, string ip);
+
     public MessageViewModel Logout(int userID, string ip, string oldJti);
 
     public List<KeyValueViewModel> GetClaimsList(string userName);
@@ -38,4 +40,15 @@ public interface IUserHandler
     public Base64ViewModel GetQRCodeOfSecretKey(int userID);
 
     public MessageViewModel GenerateSecretKey(int userID);
+
+    public List<PageViewModel> GetPages(int userID);
+
+    public List<NavigationViewModel> GetNavigation(int userID, bool showAll = false);
+
+    public List<ControllerActionViewModel> GetControllerActions(int userID, Func<ControllerAction, bool> where = null);
+
+    public List<MenuViewModel> GetMenus(int userID);
+
+    public ProfileViewModel GetProfile(int userID);
+
 }
