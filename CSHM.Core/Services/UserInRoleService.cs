@@ -260,4 +260,8 @@ public class UserInRoleService : Repository<UserInRole, UserInRoleViewModel>, IU
         return result;
     }
 
+    public override ResultViewModel<UserInRoleViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
+    {
+        throw new NotImplementedException();
+    }
 }

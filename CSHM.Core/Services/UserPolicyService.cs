@@ -242,4 +242,8 @@ public class UserPolicyService : Repository<UserPolicy, UserPolicyViewModel>, IU
         return result;
     }
 
+    public override ResultViewModel<UserPolicyViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -7,7 +7,7 @@ namespace CSHM.Core.Services.Interfaces;
 
 public interface IPageService : IRepository<Page, PageViewModel>
 {
-    public ResultViewModel<PageViewModel> SelectAll(bool? activate, int changeTypeID, int? pageNumber = null, int pageSize = 20);
+    public ResultViewModel<PageViewModel> SelectAllBychangeTypeID(bool? activate, int changeTypeID, int? pageNumber = null, int pageSize = 20);
 
     HttpResponseMessage ExcelAll();
 

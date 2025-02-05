@@ -19,7 +19,7 @@ namespace CSHM.Presentation.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Errors {
@@ -39,7 +39,7 @@ namespace CSHM.Presentation.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CSHM.Presentation.Errors", typeof(Errors).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CSHM.Presentation.Resources.Errors", typeof(Errors).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -84,15 +84,6 @@ namespace CSHM.Presentation.Resources {
         public static string AccountTypeUnknown {
             get {
                 return ResourceManager.GetString("AccountTypeUnknown", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to امکان تراکنش با مبلغ صفر ریال امکانپذیر نمی باشد.
-        /// </summary>
-        public static string Amount0NotValid {
-            get {
-                return ResourceManager.GetString("Amount0NotValid", resourceCulture);
             }
         }
         
@@ -286,6 +277,15 @@ namespace CSHM.Presentation.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 1055.
+        /// </summary>
+        public static string Error1055 {
+            get {
+                return ResourceManager.GetString("Error1055", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 605.
         /// </summary>
         public static string Error605 {
@@ -376,42 +376,6 @@ namespace CSHM.Presentation.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to درگاه پرداخت توسط ادمین کل بسته شده است.
-        /// </summary>
-        public static string GatewayIsClosed {
-            get {
-                return ResourceManager.GetString("GatewayIsClosed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to سقف تراکنش در درگاه پرداخت رعایت نشده است.
-        /// </summary>
-        public static string GatewayMaxTransactionIsNotValid {
-            get {
-                return ResourceManager.GetString("GatewayMaxTransactionIsNotValid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to پیام رمزشده درگاه پرداخت نامعتبر است.
-        /// </summary>
-        public static string GatewayPostMessageFailed {
-            get {
-                return ResourceManager.GetString("GatewayPostMessageFailed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to فرآیند بازگشایی پیام رمزشده درگاه پرداخت با موفقت پایان یافت.
-        /// </summary>
-        public static string GatewayPostMessageSuccessed {
-            get {
-                return ResourceManager.GetString("GatewayPostMessageSuccessed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to شرایط اعطای هدیه به کاربر میسر نمی باشد.
         /// </summary>
         public static string GiftRulesNotValid {
@@ -471,6 +435,15 @@ namespace CSHM.Presentation.Resources {
         public static string MaxPerTransactionRejected {
             get {
                 return ResourceManager.GetString("MaxPerTransactionRejected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to مقدار فایل ارسالی تهی می باشد.
+        /// </summary>
+        public static string MediaFileIsNull {
+            get {
+                return ResourceManager.GetString("MediaFileIsNull", resourceCulture);
             }
         }
         
@@ -574,6 +547,15 @@ namespace CSHM.Presentation.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to رمز یکبار مصرف قبلا استفاده شده است..
+        /// </summary>
+        public static string OTPIsUsed1 {
+            get {
+                return ResourceManager.GetString("OTPIsUsed1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to رمز پویا کمتر از 90 ثانیه پیش درخواست شده است.
         /// </summary>
         public static string OTPLastSentError {
@@ -655,29 +637,11 @@ namespace CSHM.Presentation.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to کلید محرمانه معتبر نمی باشد.
-        /// </summary>
-        public static string SecretKeyNotValid {
-            get {
-                return ResourceManager.GetString("SecretKeyNotValid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to سرویس مورد نظر فعال نمی باشد.
         /// </summary>
         public static string ServiceUnavailable {
             get {
                 return ResourceManager.GetString("ServiceUnavailable", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to تنظیمات ادمین مانع از انجام این فرآیند است.
-        /// </summary>
-        public static string SettingFailed {
-            get {
-                return ResourceManager.GetString("SettingFailed", resourceCulture);
             }
         }
         
@@ -718,29 +682,11 @@ namespace CSHM.Presentation.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to پایانه معتبر نمی باشد.
-        /// </summary>
-        public static string TerminalNotValid {
-            get {
-                return ResourceManager.GetString("TerminalNotValid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to جیب مقصد یافت نشد.
         /// </summary>
         public static string ToPocketNotFound {
             get {
                 return ResourceManager.GetString("ToPocketNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to شرایط تراکنش محقق نشد.
-        /// </summary>
-        public static string TransactionConditionsDenied {
-            get {
-                return ResourceManager.GetString("TransactionConditionsDenied", resourceCulture);
             }
         }
         
@@ -889,11 +835,11 @@ namespace CSHM.Presentation.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to نقطه اتصال کاربر معتبر نمی باشد.
+        ///   Looks up a localized string similar to این حساب کاربری قبلا ایجاد شده است.
         /// </summary>
-        public static string UserGaurdNotValid {
+        public static string UserExisted {
             get {
-                return ResourceManager.GetString("UserGaurdNotValid", resourceCulture);
+                return ResourceManager.GetString("UserExisted", resourceCulture);
             }
         }
         
@@ -907,29 +853,11 @@ namespace CSHM.Presentation.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to کاربر اقدام کننده  با مالک رکورد همخوانی ندارد.
-        /// </summary>
-        public static string UserMatchingNotValid {
-            get {
-                return ResourceManager.GetString("UserMatchingNotValid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to کاربر یافت نشد.
         /// </summary>
         public static string UserNotFound {
             get {
                 return ResourceManager.GetString("UserNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to نوع کاربری معتبر نمی باشد.
-        /// </summary>
-        public static string UserTypeNotValid {
-            get {
-                return ResourceManager.GetString("UserTypeNotValid", resourceCulture);
             }
         }
         
@@ -1011,15 +939,6 @@ namespace CSHM.Presentation.Resources {
         public static string WalletNotFound {
             get {
                 return ResourceManager.GetString("WalletNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to کیف پول پذیرنده یافت نشد.
-        /// </summary>
-        public static string WalletOfMerchantNotFount {
-            get {
-                return ResourceManager.GetString("WalletOfMerchantNotFount", resourceCulture);
             }
         }
         

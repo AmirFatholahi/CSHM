@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CSHM.Core.Repositories;
+using CSHM.Domain;
+using CSHM.Presentation.Base;
+using CSHM.Presentation.Publish;
 
-namespace CSHM.Core.Services.Interfaces
+namespace CSHM.Core.Services.Interfaces;
+
+public interface IPublisherService : IRepository<Publisher,PublisherViewModel>
 {
-    public interface IPublisherService
-    {
-    }
+    public  ResultViewModel<PublisherViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20);
 }

@@ -69,7 +69,7 @@ public class NotificationOwnerService : Repository<NotificationOwner, Notificati
     }
     
 
-    public  ResultViewModel<NotificationOwnerViewModel> SelectAll(bool? activate, string? filter = null, int? pageNumber = null, int pageSize = 20)
+    public override ResultViewModel<NotificationOwnerViewModel> SelectAll(bool? activate, string? filter = null, int? pageNumber = null, int pageSize = 20)
     {
         var result = new ResultViewModel<NotificationOwnerViewModel>();
         try

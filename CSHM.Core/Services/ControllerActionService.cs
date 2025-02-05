@@ -38,6 +38,11 @@ public class ControllerActionService : Repository<ControllerAction, ControllerAc
         return result;
     }
 
+    public override ResultViewModel<ControllerActionViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
+    {
+        throw new NotImplementedException();
+    }
+
     /// <summary>
     /// اعتبارسنجی فرم
     /// </summary>

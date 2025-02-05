@@ -642,5 +642,8 @@ public class UserService : Repository<User, UserViewModel>, IUserService
         return result;
     }
 
-
+    public override ResultViewModel<UserViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
+    {
+        throw new NotImplementedException();
+    }
 }

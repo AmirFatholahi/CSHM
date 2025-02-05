@@ -299,5 +299,8 @@ public class MediaService : Repository<Media, MediaViewModel>, IMediaService
         return result;
     }
 
-
+    public override ResultViewModel<MediaViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
+    {
+        throw new NotImplementedException();
+    }
 }

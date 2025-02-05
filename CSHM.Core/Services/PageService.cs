@@ -27,7 +27,11 @@ public class PageService : Repository<Page, PageViewModel>, IPageService
         _excel = excel;
     }
 
-    public  ResultViewModel<PageViewModel> SelectAll(bool? activate, int changeTypeID, int? pageNumber = null, int pageSize = 20)
+
+     
+
+
+    public  ResultViewModel<PageViewModel> SelectAllBychangeTypeID(bool? activate, int changeTypeID, int? pageNumber = null, int pageSize = 20)
     {
         var result = new ResultViewModel<PageViewModel>();
         try
@@ -55,7 +59,7 @@ public class PageService : Repository<Page, PageViewModel>, IPageService
     }
 
 
-    public  ResultViewModel<PageViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
+    public override ResultViewModel<PageViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
     {
         var result = new ResultViewModel<PageViewModel>();
         try

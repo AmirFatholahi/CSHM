@@ -48,7 +48,7 @@ public class NotificationDraftService : Repository<NotificationDraft, Notificati
     }
 
 
-    public  ResultViewModel<NotificationDraftViewModel> SelectAll(bool? activate, string? filter = null, int? pageNumber = null, int pageSize = 20)
+    public override  ResultViewModel<NotificationDraftViewModel> SelectAll(bool? activate, string? filter = null, int? pageNumber = null, int pageSize = 20)
     {
         var result = new ResultViewModel<NotificationDraftViewModel>();
         try

@@ -4,9 +4,13 @@ public class PageViewModel
 {
     public int ID { get; set; }
 
-    public int ModuleID { get; set; }
+    //public int ModuleID { get; set; }
 
-    public string ModuleTitle { get; set; }
+    //public string ModuleTitle { get; set; }
+
+    public int ChannelTypeID { get; set; }
+
+    public string ChannelTypeTitle { get; set; }
 
     public int? ParentID { get; set; }
 

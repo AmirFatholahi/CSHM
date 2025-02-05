@@ -1,19 +1,18 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Hosting;
+using CSHM.Presentation.Base;
+using CSHM.Presentation.Product;
 using CSHM.Core.Repositories;
 using CSHM.Core.Services.Interfaces;
 using CSHM.Data.Context;
 using CSHM.Domain;
-using CSHM.Presentation.Base;
-using CSHM.Presentation.Product;
-using CSHM.Presentation.Resources;
 using CSHM.Widget.Excel;
 using CSHM.Widget.Log;
-using Microsoft.AspNetCore.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CSHM.Widget.Method;
+using CSHM.Presentation.Resources;
+using System.Linq.Expressions;
+using System.Reflection;
+
 
 namespace CSHM.Core.Services
 {
@@ -33,7 +32,35 @@ namespace CSHM.Core.Services
             _context = context;
         }
 
+        public ResultViewModel<ProductViewModel> SelectAllByPublisher(bool? activate, int publisherID, int? pageNumber = null, int pageSize = 20) 
+        {
+            var result = new ResultViewModel<ProductViewModel>();
+            try
+            {
+                IQueryable<Product> items;
+                Expression<Func<Product, bool>> condition = x => x.PublisherID == publisherID;
+                items = GetAll(activate, condition, pageNumber, pageSize);
+                result.List = MapToViewModel(items);
 
+                result.TotalCount = Count(activate, condition);
+
+                result.Message = result.TotalCount > 0
+                    ? new MessageViewModel { Status = Statuses.Success }
+                    : new MessageViewModel { Status = Statuses.Warning, Message = Messages.NotFoundAnyRecords };
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _log.ExceptionLog(ex, MethodBase.GetCurrentMethod().GetSourceName());
+                result.Message = new MessageViewModel { Status = Statuses.Error, Message = _log.GetExceptionMessage(ex) };
+                return result;
+            }
+        }
+
+        public override ResultViewModel<ProductViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
+        {
+            throw new NotImplementedException();
+        }
 
         private List<ErrorViewModel> ValidationForm(Product entity)
         {

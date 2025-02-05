@@ -121,6 +121,11 @@ public class CalenderDimensionService : Repository<CalenderDimension, CalenderDi
         }
     }
 
+    public override ResultViewModel<CalenderDimensionViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
+    {
+        throw new NotImplementedException();
+    }
+
 
 
     /// <summary>

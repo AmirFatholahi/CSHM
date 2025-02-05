@@ -30,7 +30,7 @@ namespace CSHM.Api.Controllers
         [Route("api/page/getAllMenus/{channelTypeID}")]
         public ResultViewModel<PageViewModel> getAllMenus(int channelTypeID)
         {
-            var result = _pageService.SelectAll(true,channelTypeID);
+            var result = _pageService.SelectAllBychangeTypeID(true,channelTypeID);
             return result;
         }
 

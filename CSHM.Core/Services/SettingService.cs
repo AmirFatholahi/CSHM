@@ -24,6 +24,11 @@ public class SettingService : Repository<Setting, SettingViewModel>, ISettingSer
         _mapper = mapper;
     }
 
+    public override ResultViewModel<SettingViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
+    {
+        throw new NotImplementedException();
+    }
+
     //public override ResultViewModel<SettingViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
     //{
     //    var result = new ResultViewModel<SettingViewModel>();

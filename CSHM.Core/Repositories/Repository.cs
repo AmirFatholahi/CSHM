@@ -286,7 +286,7 @@ public abstract class Repository<T, V> : CRUD<T>, IRepository<T, V> where V : cl
         return query.Count();
     }
 
-    //public abstract ResultViewModel<V> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20);
+    public abstract ResultViewModel<V> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20);
 
     public virtual List<V> MapToViewModel(IQueryable<T> items)
     {

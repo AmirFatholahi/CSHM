@@ -22,7 +22,10 @@ namespace CSHM.Core.Services
             _mapper = mapper;
         }
 
-
+        public override ResultViewModel<ProductTypeViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
+        {
+            throw new NotImplementedException();
+        }
 
         public List<ErrorViewModel> ValidationForm(ProductTypeViewModel entity)
         {

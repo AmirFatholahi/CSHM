@@ -27,7 +27,7 @@ public class NotificationService : Repository<Notification, NotificationViewMode
         _excel = excel;
     }
 
-    public  ResultViewModel<NotificationViewModel> SelectAll(bool? activate, string? filter = null, int? pageNumber = null, int pageSize = 20)
+    public override ResultViewModel<NotificationViewModel> SelectAll(bool? activate, string? filter = null, int? pageNumber = null, int pageSize = 20)
     {
         var result = new ResultViewModel<NotificationViewModel>();
         try

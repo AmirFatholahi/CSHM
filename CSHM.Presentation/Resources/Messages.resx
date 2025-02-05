@@ -15,8 +15,8 @@
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
     <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
     <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
     <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AccessDenied" xml:space="preserve">
     <value>دسترسی شما محدود شده است</value>
@@ -125,6 +125,9 @@
   </data>
   <data name="APIFailed" xml:space="preserve">
     <value>اتصال رابط کاربری با شکست مواجه شد</value>
+  </data>
+  <data name="AvatarChangeSuccess" xml:space="preserve">
+    <value>آواتار شما با موفقیت ثبت گردید</value>
   </data>
   <data name="ChargeBatchSuccessed" xml:space="preserve">
     <value>شارژ تجمعی {0} تعداد از {1} ردیف کل با موفقیت انجام شد</value>
@@ -159,6 +162,9 @@
   <data name="FormIsNotValid" xml:space="preserve">
     <value>داده‌های ورودی نامعتبر می‌باشد</value>
   </data>
+  <data name="InquirySeccessed" xml:space="preserve">
+    <value>فرآیند استعلام با موفقیت انجام شد</value>
+  </data>
   <data name="InvalidCaptcha" xml:space="preserve">
     <value>کد امنیتی نا معتبر است</value>
   </data>
@@ -188,6 +194,9 @@
   </data>
   <data name="RecordExisted" xml:space="preserve">
     <value>این رکورد تکراری می‌باشد</value>
+  </data>
+  <data name="RecordNotFound" xml:space="preserve">
+    <value>این رکورد موجود نمی‌باشد</value>
   </data>
   <data name="RecordNotFoundError610" xml:space="preserve">
     <value>این رکورد موجود نمی‌باشد</value>
@@ -240,9 +249,6 @@
   <data name="SMSSent" xml:space="preserve">
     <value>پیامک با موفقیت ارسال شد</value>
   </data>
-  <data name="TerminalIsValid" xml:space="preserve">
-    <value>پایانه معتبر می‌باشد</value>
-  </data>
   <data name="TransactionSuccessed" xml:space="preserve">
     <value>تراکنش با موفقیت انجام شد</value>
   </data>
@@ -255,9 +261,6 @@
   <data name="UpdateSuccessed" xml:space="preserve">
     <value>ویرایش رکورد با موفقیت صورت پذیرفت</value>
   </data>
-  <data name="UserBatchCreation" xml:space="preserve">
-    <value>ایجاد کاربری {0} تعداد از {1} ردیف کل با موفقیت انجام شد</value>
-  </data>
   <data name="UserNotFound" xml:space="preserve">
     <value>کاربر یافت نشد</value>
   </data>
@@ -269,9 +272,6 @@
   </data>
   <data name="VerifyVoucherSuccessed" xml:space="preserve">
     <value>تایید تراکنش دو مرحله ای با موفقیت انجام شد</value>
-  </data>
-  <data name="VoucherRegistered" xml:space="preserve">
-    <value>تراکنش با موفقیت انجام شد</value>
   </data>
   <data name="WalletMatched" xml:space="preserve">
     <value>کیف پول با اطلاعات وارد شده معتبر می باشد</value>

@@ -15,8 +15,8 @@
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
     <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
     <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
     <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AccountNumberIsClosed" xml:space="preserve">
     <value>این شماره حساب بسته شده است</value>
@@ -125,9 +125,6 @@
   </data>
   <data name="AccountTypeUnknown" xml:space="preserve">
     <value>نوع حساب ناشناخته می باشد</value>
-  </data>
-  <data name="Amount0NotValid" xml:space="preserve">
-    <value>امکان تراکنش با مبلغ صفر ریال امکانپذیر نمی باشد</value>
   </data>
   <data name="ApiKeyNotFound" xml:space="preserve">
     <value>رشته کاربری معتبر نمی باشد</value>
@@ -192,6 +189,9 @@
   <data name="DestinationWalletNotFound" xml:space="preserve">
     <value>کیف پول مقصد یافت نشد</value>
   </data>
+  <data name="Error1055" xml:space="preserve">
+    <value>1055</value>
+  </data>
   <data name="Error605" xml:space="preserve">
     <value>605</value>
   </data>
@@ -222,18 +222,6 @@
   <data name="FromPocketNotFound" xml:space="preserve">
     <value>جیب مبدا یافت نشد</value>
   </data>
-  <data name="GatewayIsClosed" xml:space="preserve">
-    <value>درگاه پرداخت توسط ادمین کل بسته شده است</value>
-  </data>
-  <data name="GatewayMaxTransactionIsNotValid" xml:space="preserve">
-    <value>سقف تراکنش در درگاه پرداخت رعایت نشده است</value>
-  </data>
-  <data name="GatewayPostMessageFailed" xml:space="preserve">
-    <value>پیام رمزشده درگاه پرداخت نامعتبر است</value>
-  </data>
-  <data name="GatewayPostMessageSuccessed" xml:space="preserve">
-    <value>فرآیند بازگشایی پیام رمزشده درگاه پرداخت با موفقت پایان یافت</value>
-  </data>
   <data name="GiftRulesNotValid" xml:space="preserve">
     <value>شرایط اعطای هدیه به کاربر میسر نمی باشد</value>
   </data>
@@ -254,6 +242,9 @@
   </data>
   <data name="MaxPerTransactionRejected" xml:space="preserve">
     <value>سقف تراکنش رعایت  نشده است</value>
+  </data>
+  <data name="MediaFileIsNull" xml:space="preserve">
+    <value>مقدار فایل ارسالی تهی می باشد</value>
   </data>
   <data name="MerchantAccessForbidden" xml:space="preserve">
     <value>پذیرنده فاقد دسترسی به کیف پول مقصد می باشد</value>
@@ -288,6 +279,9 @@
   <data name="OTPIsUsed" xml:space="preserve">
     <value>رمز یکبار مصرف قبلا استفاده شده است.</value>
   </data>
+  <data name="OTPIsUsed1" xml:space="preserve">
+    <value>رمز یکبار مصرف قبلا استفاده شده است.</value>
+  </data>
   <data name="OTPLastSentError" xml:space="preserve">
     <value>رمز پویا کمتر از 90 ثانیه پیش درخواست شده است</value>
   </data>
@@ -315,14 +309,8 @@
   <data name="SamePocketForbidden" xml:space="preserve">
     <value>یکسان بودن شناسه جیب مبدا و مقصد مجاز نمی باشد</value>
   </data>
-  <data name="SecretKeyNotValid" xml:space="preserve">
-    <value>کلید محرمانه معتبر نمی باشد</value>
-  </data>
   <data name="ServiceUnavailable" xml:space="preserve">
     <value>سرویس مورد نظر فعال نمی باشد</value>
-  </data>
-  <data name="SettingFailed" xml:space="preserve">
-    <value>تنظیمات ادمین مانع از انجام این فرآیند است</value>
   </data>
   <data name="SettingNotFound" xml:space="preserve">
     <value>تنظیمات یافت نشد</value>
@@ -336,14 +324,8 @@
   <data name="TerminalNotFound" xml:space="preserve">
     <value>ترمینال یافت نشد</value>
   </data>
-  <data name="TerminalNotValid" xml:space="preserve">
-    <value>پایانه معتبر نمی باشد</value>
-  </data>
   <data name="ToPocketNotFound" xml:space="preserve">
     <value>جیب مقصد یافت نشد</value>
-  </data>
-  <data name="TransactionConditionsDenied" xml:space="preserve">
-    <value>شرایط تراکنش محقق نشد</value>
   </data>
   <data name="TransactionDenied" xml:space="preserve">
     <value>شما مجوز دسترسی به این تراکنش را ندارید</value>
@@ -393,20 +375,14 @@
   <data name="UserExist" xml:space="preserve">
     <value>این کدملی قبلا ثبت شده است</value>
   </data>
-  <data name="UserGaurdNotValid" xml:space="preserve">
-    <value>نقطه اتصال کاربر معتبر نمی باشد</value>
+  <data name="UserExisted" xml:space="preserve">
+    <value>این حساب کاربری قبلا ایجاد شده است</value>
   </data>
   <data name="UserInRoleExisted" xml:space="preserve">
     <value>این نقش قبلا به این کاربر نسبت داده شده است</value>
   </data>
-  <data name="UserMatchingNotValid" xml:space="preserve">
-    <value>کاربر اقدام کننده  با مالک رکورد همخوانی ندارد</value>
-  </data>
   <data name="UserNotFound" xml:space="preserve">
     <value>کاربر یافت نشد</value>
-  </data>
-  <data name="UserTypeNotValid" xml:space="preserve">
-    <value>نوع کاربری معتبر نمی باشد</value>
   </data>
   <data name="ValurInOld" xml:space="preserve">
     <value>تاریخ والور از تاریخ روز جاری کوچکتر است</value>
@@ -434,9 +410,6 @@
   </data>
   <data name="WalletNotFound" xml:space="preserve">
     <value>کیف مورد نظر یافت نشد</value>
-  </data>
-  <data name="WalletOfMerchantNotFount" xml:space="preserve">
-    <value>کیف پول پذیرنده یافت نشد</value>
   </data>
   <data name="WithdrawDailyRejected" xml:space="preserve">
     <value>سقف برداشت روزانه رعایت نشده است</value>

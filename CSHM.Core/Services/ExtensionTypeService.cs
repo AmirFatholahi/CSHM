@@ -61,6 +61,11 @@ public class ExtensionTypeService : Repository<ExtensionType, ExtensionTypeViewM
         }
     }
 
+    public override ResultViewModel<ExtensionTypeViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
+    {
+        throw new NotImplementedException();
+    }
+
     //public override ResultViewModel<ExtensionTypeViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
     //{
     //    var result = new ResultViewModel<ExtensionTypeViewModel>();

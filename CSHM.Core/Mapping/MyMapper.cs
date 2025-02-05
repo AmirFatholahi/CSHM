@@ -20,6 +20,7 @@ using CSHM.Presentation.Size;
 using CSHM.Presentation.Cover;
 using CSHM.Domain.Models;
 using CSHM.Presentation.Notification;
+using CSHM.Presentations.Login;
 
 namespace CSHM.Core.Mapping;
 
@@ -72,7 +73,8 @@ public class MyMapper : Profile
         CreateMap<RoleViewModel, RoleExcelModel>();
         CreateMap<RoleClaimViewModel, RoleClaimExcelModel>();
 
-
+        CreateMap<Page, PageViewModel>();
+        CreateMap<PageViewModel, PageExcelModel>();
         //===============================================
         //===============================================
         //===============================================Media

@@ -27,6 +27,11 @@ public class MediaTypeService : Repository<MediaType, MediaTypeViewModel>, IMedi
         _excel = excel;
     }
 
+    public override ResultViewModel<MediaTypeViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
+    {
+        throw new NotImplementedException();
+    }
+
     /// <summary>
     /// اعتبارسنجی فرم
     /// </summary>

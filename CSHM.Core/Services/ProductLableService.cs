@@ -33,7 +33,10 @@ namespace CSHM.Core.Services
             _context = context;
         }
 
-
+        public override ResultViewModel<ProductLableViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
+        {
+            throw new NotImplementedException();
+        }
 
         private List<ErrorViewModel> ValidationForm(ProductLable entity)
         {

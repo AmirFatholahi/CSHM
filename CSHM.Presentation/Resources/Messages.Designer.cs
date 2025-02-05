@@ -19,7 +19,7 @@ namespace CSHM.Presentation.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Messages {
@@ -39,7 +39,7 @@ namespace CSHM.Presentation.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CSHM.Presentation.Messages", typeof(Messages).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CSHM.Presentation.Resources.Messages", typeof(Messages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -84,6 +84,15 @@ namespace CSHM.Presentation.Resources {
         public static string APIFailed {
             get {
                 return ResourceManager.GetString("APIFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to آواتار شما با موفقیت ثبت گردید.
+        /// </summary>
+        public static string AvatarChangeSuccess {
+            get {
+                return ResourceManager.GetString("AvatarChangeSuccess", resourceCulture);
             }
         }
         
@@ -187,6 +196,15 @@ namespace CSHM.Presentation.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to فرآیند استعلام با موفقیت انجام شد.
+        /// </summary>
+        public static string InquirySeccessed {
+            get {
+                return ResourceManager.GetString("InquirySeccessed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to کد امنیتی نا معتبر است.
         /// </summary>
         public static string InvalidCaptcha {
@@ -273,6 +291,15 @@ namespace CSHM.Presentation.Resources {
         public static string RecordExisted {
             get {
                 return ResourceManager.GetString("RecordExisted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to این رکورد موجود نمی‌باشد.
+        /// </summary>
+        public static string RecordNotFound {
+            get {
+                return ResourceManager.GetString("RecordNotFound", resourceCulture);
             }
         }
         
@@ -430,15 +457,6 @@ namespace CSHM.Presentation.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to پایانه معتبر می‌باشد.
-        /// </summary>
-        public static string TerminalIsValid {
-            get {
-                return ResourceManager.GetString("TerminalIsValid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to تراکنش با موفقیت انجام شد.
         /// </summary>
         public static string TransactionSuccessed {
@@ -475,15 +493,6 @@ namespace CSHM.Presentation.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ایجاد کاربری {0} تعداد از {1} ردیف کل با موفقیت انجام شد.
-        /// </summary>
-        public static string UserBatchCreation {
-            get {
-                return ResourceManager.GetString("UserBatchCreation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to کاربر یافت نشد.
         /// </summary>
         public static string UserNotFound {
@@ -516,15 +525,6 @@ namespace CSHM.Presentation.Resources {
         public static string VerifyVoucherSuccessed {
             get {
                 return ResourceManager.GetString("VerifyVoucherSuccessed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to تراکنش با موفقیت انجام شد.
-        /// </summary>
-        public static string VoucherRegistered {
-            get {
-                return ResourceManager.GetString("VoucherRegistered", resourceCulture);
             }
         }
         

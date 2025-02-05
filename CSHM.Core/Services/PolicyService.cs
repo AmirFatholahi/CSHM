@@ -63,6 +63,11 @@ public class PolicyService : Repository<Policy, PolicyViewModel>, IPolicyService
         }
     }
 
+    public override ResultViewModel<PolicyViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
+    {
+        throw new NotImplementedException();
+    }
+
 
 
     //public override ResultViewModel<PolicyViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)

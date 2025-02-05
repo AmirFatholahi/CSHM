@@ -28,6 +28,11 @@ public class PolicyParameterService : Repository<PolicyParameter, PolicyParamete
         _excel = excel;
     }
 
+    public override ResultViewModel<PolicyParameterViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
+    {
+        throw new NotImplementedException();
+    }
+
 
     /// <summary>
     /// دریافت پارامترها با استفاده از ساید

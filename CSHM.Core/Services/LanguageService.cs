@@ -22,7 +22,10 @@ namespace CSHM.Core.Services
             _mapper = mapper;
         }
 
-
+        public override ResultViewModel<LanguageViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
+        {
+            throw new NotImplementedException();
+        }
 
         public List<ErrorViewModel> ValidationForm(LanguageViewModel entity)
         {

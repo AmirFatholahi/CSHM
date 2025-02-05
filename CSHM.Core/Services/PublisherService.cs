@@ -1,14 +1,17 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Hosting;
+using CSHM.Presentation.Base;
+using CSHM.Presentation.Publish;
 using CSHM.Core.Repositories;
 using CSHM.Core.Services.Interfaces;
 using CSHM.Data.Context;
 using CSHM.Domain;
-using CSHM.Presentation.Base;
-using CSHM.Presentation.Publish;
-using CSHM.Presentation.Resources;
 using CSHM.Widget.Excel;
 using CSHM.Widget.Log;
-using Microsoft.AspNetCore.Hosting;
+using CSHM.Widget.Method;
+using CSHM.Presentation.Resources;
+using System.Linq.Expressions;
+using System.Reflection;
 
 
 namespace CSHM.Core.Services
@@ -21,12 +24,44 @@ namespace CSHM.Core.Services
         private readonly DatabaseContext _context;
 
 
-        public PublisherService(DatabaseContext context, ILogWidget log, IMapper mapper, IExcelWidget excel, IHostingEnvironment hostingEnvironment) : base(context, log, mapper)
+        public  PublisherService(DatabaseContext context, ILogWidget log, IMapper mapper, IExcelWidget excel, IHostingEnvironment hostingEnvironment) : base(context, log, mapper)
         {
             _log = log;
             _mapper = mapper;
             _excel = excel;
             _context = context;
+        }
+
+        public override ResultViewModel<PublisherViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
+        {
+            var result = new ResultViewModel<PublisherViewModel>();
+            try
+            {
+                IQueryable<Publisher> items;
+                Expression<Func<Publisher, bool>> condition = x => (string.IsNullOrWhiteSpace(filter) || x.Title.Contains(filter));
+                if (!string.IsNullOrWhiteSpace(filter))
+                {
+                    items = GetAll(activate, condition, pageNumber, pageSize);
+                }
+                else
+                {
+                    items = GetAll(activate, null, pageNumber, pageSize);
+                }
+                result.List = MapToViewModel(items);
+
+                result.TotalCount = Count(activate, condition);
+
+                result.Message = result.TotalCount > 0
+                    ? new MessageViewModel { Status = Statuses.Success }
+                    : new MessageViewModel { Status = Statuses.Warning, Message = Messages.NotFoundAnyRecords };
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _log.ExceptionLog(ex, MethodBase.GetCurrentMethod().GetSourceName());
+                result.Message = new MessageViewModel { Status = Statuses.Error, Message = _log.GetExceptionMessage(ex) };
+                return result;
+            }
         }
 
 

@@ -86,4 +86,8 @@ public class RoleClaimService : Repository<RoleClaim, RoleClaimViewModel>, IRole
         return result;
     }
 
+    public override ResultViewModel<RoleClaimViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
+    {
+        throw new NotImplementedException();
+    }
 }
