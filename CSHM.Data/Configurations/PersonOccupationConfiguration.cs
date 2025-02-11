@@ -20,7 +20,7 @@ namespace CSHM.Data.Configurations
 
 
             builder.HasOne(x => x.Person)
-                   .WithMany()
+                   .WithMany(y => y.PersonOccupations)
                    .HasForeignKey(x => x.PersonID)
                    .IsRequired()
                    .OnDelete(DeleteBehavior.Restrict);

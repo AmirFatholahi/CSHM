@@ -108,6 +108,8 @@ public static class Injector
         service.AddScoped<IMediaHandler, MediaHandler>();
         service.AddScoped<IKowsarHandler , KowsarHandler>();
 
+        service.AddScoped<IPersonHandler, PersonHandler>();
+
 
 
 

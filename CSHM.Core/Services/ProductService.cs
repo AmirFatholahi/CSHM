@@ -40,6 +40,7 @@ namespace CSHM.Core.Services
                 IQueryable<Product> items;
                 Expression<Func<Product, bool>> condition = x => x.PublisherID == publisherID;
                 items = GetAll(activate, condition, pageNumber, pageSize);
+                
                 result.List = MapToViewModel(items);
 
                 result.TotalCount = Count(activate, condition);

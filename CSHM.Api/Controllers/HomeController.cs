@@ -1,4 +1,5 @@
 ﻿using CSHM.Api.Extensions;
+using CSHM.Core.Handlers.Interfaces;
 using CSHM.Core.Services.Interfaces;
 using CSHM.Presentation.Publish;
 using CSHM.Widget.Client;
@@ -15,7 +16,8 @@ namespace CSHM.Api.Controllers
         private readonly IPublisherService _publisherService;
         private readonly IProductService _productService;
         private readonly IPageService _pageService;
-        public HomeController(IClientWidget client,IPublisherService publisherService, IProductService productService, IPageService pageService)
+        private readonly IPersonHandler _personHandler;
+        public HomeController(IClientWidget client,IPublisherService publisherService, IProductService productService, IPageService pageService,IPersonHandler personHandler)
         {
 
             _baseURL = ConfigWidget.GetConfigValue<string>("PublishedServerAddresses:0:BaseUrl");
@@ -23,14 +25,16 @@ namespace CSHM.Api.Controllers
             _publisherService = publisherService;
             _productService = productService;
             _pageService = pageService;
+            _personHandler = personHandler;
         }
 
         public IActionResult Index()
         {
 
             //var x = _publisherService.GetAll(true,null, 1, 20);
-            //var x = _productService.SelectAllByPublisher(true, 1, 1, 20);
+            var x = _productService.SelectAllByPublisher(true, 1, 1, 20);
             //var x = _pageService.SelectAllBychangeTypeID(true, 1, 1, 20);
+           // var x = _personHandler.SelectAllByOccupation(1);
             ViewBag.Version = PublicExtension.GetVersion();
             ViewBag.BaseUrl = _baseURL;
             return View();
