@@ -160,7 +160,7 @@ namespace CSHM.Core.Services
                 });
             }
 
-            if (!string.IsNullOrEmpty(entity.MetaDercreption) && entity.MetaDercreption.Length > 4000)
+            if (!string.IsNullOrEmpty(entity.MetaDescription) && entity.MetaDescription.Length > 4000)
             {
                 result.Add(new ErrorViewModel()
                 {

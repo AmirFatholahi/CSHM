@@ -51,7 +51,7 @@ namespace CSHM.Domain
 
         public string PublishDate { get; set; } // تاریخ انتشار
 
-        public string MetaDercreption { get; set; }
+        public string MetaDescription { get; set; }
 
         public int PageCount { get; set; }
 
