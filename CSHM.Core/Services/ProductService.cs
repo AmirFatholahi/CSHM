@@ -34,7 +34,7 @@ namespace CSHM.Core.Services
 
         public ResultViewModel<ProductViewModel> SelectAllByPublisher(bool? activate, int publisherID, int? pageNumber = null, int pageSize = 20) 
         {
-            var result = new ResultViewModel<ProductViewModel>();
+            ResultViewModel<ProductViewModel> result;// = new ResultViewModel<ProductViewModel>();
             try
             {
                 IQueryable<Product> items;
@@ -42,7 +42,7 @@ namespace CSHM.Core.Services
                 items = GetAll(activate, condition, pageNumber, pageSize);
                 
                 result.List = MapToViewModel(items);
-
+                
                 result.TotalCount = Count(activate, condition);
 
                 result.Message = result.TotalCount > 0

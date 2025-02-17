@@ -12,6 +12,8 @@ public class ProductViewModel
 
     public string ProductTypeTitle { get; set; }
 
+    public string Author { get; set; }
+
     public int PublishTypeID { get; set; }
 
     public string PublishTypeitle { get; set; }
@@ -61,4 +63,6 @@ public class ProductViewModel
     public string Summary { get; set; }
 
     public bool IsActive { get; set; }
+
+    public  List<ProductOccupationViewModel> Authors { get; set; }
 }

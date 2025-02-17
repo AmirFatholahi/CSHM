@@ -104,7 +104,8 @@ public class MyMapper : Profile
         //===============================================Product
 
         CreateMap<ProductType,ProductTypeViewModel>();
-        CreateMap<Product , ProductViewModel>();
+        CreateMap<Product, ProductViewModel>();
+
         CreateMap<ProductCategoryType , ProductCategoryTypeViewModel>();
         CreateMap<ProductLable , ProductLableViewModel>();
         CreateMap<ProductComment , ProductCommentViewModel>();
