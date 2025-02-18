@@ -15,7 +15,7 @@ namespace CSHM.Data.Configurations
 
 
             builder.HasOne(x => x.Product)
-                   .WithMany(y => y.ProductOccupations)
+                   .WithMany()
                    .HasForeignKey(x => x.ProductID)
                    .IsRequired()
                    .OnDelete(DeleteBehavior.Restrict);

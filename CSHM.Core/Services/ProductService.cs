@@ -34,7 +34,7 @@ namespace CSHM.Core.Services
 
         public ResultViewModel<ProductViewModel> SelectAllByPublisher(bool? activate, int publisherID, int? pageNumber = null, int pageSize = 20) 
         {
-            ResultViewModel<ProductViewModel> result;// = new ResultViewModel<ProductViewModel>();
+            ResultViewModel<ProductViewModel> result = new ResultViewModel<ProductViewModel>();
             try
             {
                 IQueryable<Product> items;

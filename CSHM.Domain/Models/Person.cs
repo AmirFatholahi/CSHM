@@ -43,6 +43,6 @@ namespace CSHM.Domain
 
         public virtual GeoCountry GeoCountry { get; set; }
 
-        public virtual ICollection<PersonOccupation> PersonOccupations { get; set; }
+      //  public virtual ICollection<PersonOccupation> PersonOccupations { get; set; }
     }
 }

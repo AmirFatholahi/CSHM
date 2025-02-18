@@ -87,12 +87,12 @@ namespace CSHM.Domain
 
         public virtual CoverType CoverType { get; set; }
 
-        public virtual ICollection<ProductCategoryType> ProductCategoryTypes { get; set; }
+        //public virtual ICollection<ProductCategoryType> ProductCategoryTypes { get; set; }
 
-        public virtual ICollection<ProductLable> ProductLables { get; set; }
+        //public virtual ICollection<ProductLable> ProductLables { get; set; }
 
-        public virtual ICollection<ProductComment> Productomments { get; set; }
+        //public virtual ICollection<ProductComment> Productomments { get; set; }
 
-        public virtual ICollection<ProductOccupation> ProductOccupations { get; set; }
+        //public virtual ICollection<ProductOccupation> ProductOccupations { get; set; }
     }
 }
