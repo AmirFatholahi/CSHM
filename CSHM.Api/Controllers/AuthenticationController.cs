@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿
 using Microsoft.AspNetCore.Mvc;
 using CSHM.Api.Extensions;
 using CSHM.Core.Handlers.Interfaces;
@@ -11,6 +11,7 @@ using CSHM.Widget.Client;
 using CSHM.Widget.Redis;
 using CSHM.Widget.Rest;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CSHM.Api.Controllers;
 
@@ -46,7 +47,7 @@ public class AuthenticationController : ControllerBase
     }
 
     [HttpGet]
-    [Authorize]
+    
     [Route("api/authentication/logout")]
     public MessageViewModel logout()
     {
@@ -56,7 +57,7 @@ public class AuthenticationController : ControllerBase
 
 
     //[HttpPost]
-    //[Authorize]
+    //
     //[Route("api/authentication/twoFactor")]
     //public TokenViewModel twoFactor([FromBody] OTPViewModel entity)
     //{
@@ -68,7 +69,7 @@ public class AuthenticationController : ControllerBase
 
 
     [HttpGet]
-    [Authorize]
+    
     [Route("api/authentication/getRefreshToken")]
     public TokenViewModel getRefreshToken()
     {
@@ -79,7 +80,7 @@ public class AuthenticationController : ControllerBase
     }
 
     [HttpPost]
-    [Authorize]
+    
     [Route("api/authentication/sendLoginOTP")]
     public MessageViewModel sendLoginOTP([FromBody] OTPViewModel entity)
     {
@@ -90,7 +91,7 @@ public class AuthenticationController : ControllerBase
 
 
     [HttpGet]
-    [Authorize]
+    
     [Route("api/authentication/getCellphoneNumberOfUser")]
     public MessageViewModel getCellphoneNumberOfUser()
     {
@@ -110,7 +111,7 @@ public class AuthenticationController : ControllerBase
     //}
 
     //[HttpPost]
-    //[Authorize]
+    //
     //[Route("api/authentication/changeForce")]
     //public MessageViewModel changeForce([FromBody] ResetPasswordViewModel entity)
     //{
@@ -131,7 +132,7 @@ public class AuthenticationController : ControllerBase
 
 
     [HttpGet]
-    [Authorize]
+    
     [Route("api/authentication/getPages")]
     public List<PageViewModel> GetPages()
     {
@@ -141,7 +142,7 @@ public class AuthenticationController : ControllerBase
 
 
     [HttpGet]
-    [Authorize]
+    
     [Route("api/authentication/getNavigation")]
     public List<MenuViewModel> GetNavigation()
     {

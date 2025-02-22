@@ -12,6 +12,10 @@ public class BlogViewModel
 
     public string BlogStatusTypeTitle { get; set; }
 
+    public int PublisherID { get; set; }
+
+    public string PublisherTitle { get; set; }
+
     public string Title { get; set; }
 
     public string Summary { get; set; }

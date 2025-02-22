@@ -17,6 +17,8 @@ namespace CSHM.Domain
 
         public int BlogStatusTypeID { get; set; }
 
+        public int PublisherID { get; set; }
+
         public string Title { get; set; }
 
         public string Summary { get; set; }
@@ -46,5 +48,7 @@ namespace CSHM.Domain
         public virtual BlogType BlogType { get; set; }
 
         public virtual BlogStatusType BlogStatusType { get; set; }
+
+        public virtual Publisher Publisher { get; set; }
     }
 }

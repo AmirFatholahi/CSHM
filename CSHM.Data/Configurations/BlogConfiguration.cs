@@ -36,6 +36,12 @@ namespace CSHM.Data.Configurations
                    .IsRequired()
                    .OnDelete(DeleteBehavior.Restrict);
 
+            builder.HasOne(x => x.Publisher)
+                   .WithMany()
+                   .HasForeignKey(x => x.PublisherID)
+                   .IsRequired()
+                   .OnDelete(DeleteBehavior.Restrict);
+
             builder.Property(x => x.IsActive).IsRequired();
             builder.Property(x => x.IsDeleted).IsRequired();
             builder.Property(x => x.CreatorID).IsRequired();

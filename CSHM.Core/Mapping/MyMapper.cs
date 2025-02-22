@@ -1,10 +1,6 @@
 ﻿using AutoMapper;
-using CSHM.Presentation.Base;
 using CSHM.Domain;
 using CSHM.Widget.Calendar;
-using CSHM.Widget.Convertor;
-using CSHM.Widget.File;
-using CSHM.Widget.Image;
 using CSHM.Presentations.User;
 using CSHM.Presentations.Role;
 using CSHM.Presentation.Blog;
@@ -111,6 +107,11 @@ public class MyMapper : Profile
         CreateMap<ProductComment , ProductCommentViewModel>();
         CreateMap<ProductOccupation , ProductOccupationViewModel>();
         CreateMap<ProductPublisher , ProductPublisherViewModel>();
+        CreateMap<ProductPropertyType , ProductPropertyTypeViewModel>();
+        CreateMap<ProductGenreType,ProductGenreTypeViewModel>();
+
+        CreateMap<PropertyType , PropertyTypeViewModel>();
+        CreateMap<GenreType, GenreTypeViewModel>();
 
         //===============================================
         //===============================================

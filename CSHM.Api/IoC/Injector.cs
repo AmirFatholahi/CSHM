@@ -18,7 +18,6 @@ using CSHM.Widget.Config;
 using CSHM.Widget.Client;
 using CSHM.Widget.PDF;
 using CSHM.Widget.Keepa;
-using CSHM.Widget.Ticketum;
 using StackExchange.Redis;
 using Nest;
 using CSHM.Core.Repositories;
@@ -77,7 +76,12 @@ public static class Injector
         service.AddScoped<IProductCommentService , ProductCommentService>();
         service.AddScoped<IProductOccupationService , ProductOccupationService>();
         service.AddScoped<IProductPublisherService , ProductPublisherService>();
-        
+        service.AddScoped<IProductPropertyTypeService , ProductPropertyTypeService>();
+        service.AddScoped<IProductGenreTypeService , ProductGenreTypeService>();
+        service.AddScoped<IPropertyTypeService,PropertyTypeService>();
+        service.AddScoped<IGenreTypeService,GenreTypeService>();
+
+
         service.AddScoped<IMediaTypeService , MediaTypeService>();
         service.AddScoped<IMediaService, MediaService>();
 
@@ -182,7 +186,7 @@ public static class Injector
         service.AddSingleton<ICaptchaWidget, CaptchaWidget>();
         service.AddSingleton<IDataRepositoryHandler, DataRepositoryHandler>();
 
-        service.AddSingleton<ITicketumWidget, TicketumWidget>();
+        
 
 
         //service.AddSingleton<IElasticClient, ElasticClient>(serviceProvider =>

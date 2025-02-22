@@ -66,6 +66,14 @@ namespace CSHM.Core.Services
                 });
             }
 
+            if (entity.PublisherID <= 0)
+            {
+                result.Add(new ErrorViewModel()
+                {
+                    ErrorCode = Errors.Error930,
+                    ErrorMessage = string.Format(Messages.FieldIsRequired, "شناسه انتشارات")
+                });
+            }
 
             //Max Length
             if (!string.IsNullOrEmpty(entity.Title) && entity.Title.Length > 150)

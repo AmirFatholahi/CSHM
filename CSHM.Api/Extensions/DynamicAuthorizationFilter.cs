@@ -1,14 +1,13 @@
-﻿using System.IdentityModel.Tokens.Jwt;
-using System.Reflection;
+﻿using System.Reflection;
 using CSHM.Core.Handlers.Interfaces;
 using CSHM.Widget.Log;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
 using CSHM.Widget.Calendar;
 using CSHM.Widget.Redis;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CSHM.Api.Extensions;
 
