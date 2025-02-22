@@ -17,7 +17,9 @@ namespace CSHM.Api.Controllers
         private readonly IProductService _productService;
         private readonly IPageService _pageService;
         private readonly IPersonHandler _personHandler;
-        public HomeController(IClientWidget client,IPublisherService publisherService, IProductService productService, IPageService pageService,IPersonHandler personHandler)
+
+        private readonly IProductHandler _productHandler;
+        public HomeController(IClientWidget client,IPublisherService publisherService, IProductService productService, IPageService pageService,IPersonHandler personHandler,IProductHandler productHandler)
         {
 
             _baseURL = ConfigWidget.GetConfigValue<string>("PublishedServerAddresses:0:BaseUrl");
@@ -26,13 +28,14 @@ namespace CSHM.Api.Controllers
             _productService = productService;
             _pageService = pageService;
             _personHandler = personHandler;
+            _productHandler = productHandler;
         }
 
         public IActionResult Index()
         {
 
             //var x = _publisherService.GetAll(true,null, 1, 20);
-            var x = _productService.SelectAllByPublisher(true, 1, 1, 20);
+            var x = _productHandler.SelectAllByPublisher(true, 1, 1, 20);
             //var x = _pageService.SelectAllBychangeTypeID(true, 1, 1, 20);
            // var x = _personHandler.SelectAllByOccupation(1);
             ViewBag.Version = PublicExtension.GetVersion();

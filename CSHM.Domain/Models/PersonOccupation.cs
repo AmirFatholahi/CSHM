@@ -17,8 +17,6 @@ namespace CSHM.Domain
 
         public int OccupationID { get; set; }
 
-        public string Title { get; set; }
-
         public bool IsActive { get; set; }
 
         public bool IsDeleted { get; set; }

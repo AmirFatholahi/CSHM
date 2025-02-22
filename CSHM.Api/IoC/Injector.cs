@@ -114,6 +114,8 @@ public static class Injector
 
         service.AddScoped<IPersonHandler, PersonHandler>();
 
+        service.AddScoped<IProductHandler, ProductHandler>();
+
 
 
 

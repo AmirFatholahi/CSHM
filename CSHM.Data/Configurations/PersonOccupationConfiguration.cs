@@ -16,7 +16,7 @@ namespace CSHM.Data.Configurations
             builder.ToTable(name: "PersonOccupations");
 
             builder.HasKey(x => x.ID);
-            builder.Property(x => x.Title).IsRequired().HasMaxLength(150);
+          
 
 
             builder.HasOne(x => x.Person)

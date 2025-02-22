@@ -69,14 +69,14 @@ namespace CSHM.Core.Services
             var result = new List<ErrorViewModel>();
 
             //Required
-            if (string.IsNullOrEmpty(entity.Title) || string.IsNullOrWhiteSpace(entity.Title))
-            {
-                result.Add(new ErrorViewModel()
-                {
-                    ErrorCode = Errors.Error930,
-                    ErrorMessage = string.Format(Messages.FieldIsRequired, "عنوان")
-                });
-            }
+            //if (string.IsNullOrEmpty(entity.Title) || string.IsNullOrWhiteSpace(entity.Title))
+            //{
+            //    result.Add(new ErrorViewModel()
+            //    {
+            //        ErrorCode = Errors.Error930,
+            //        ErrorMessage = string.Format(Messages.FieldIsRequired, "عنوان")
+            //    });
+            //}
 
             if (entity.PersonID <= 0)
             {
@@ -98,14 +98,14 @@ namespace CSHM.Core.Services
 
 
             //Max Length
-            if (!string.IsNullOrEmpty(entity.Title) && entity.Title.Length > 150)
-            {
-                result.Add(new ErrorViewModel()
-                {
-                    ErrorCode = Errors.Error931,
-                    ErrorMessage = string.Format(Messages.FieldMaxLengthExceeded, "عنوان", 150)
-                });
-            }
+            //if (!string.IsNullOrEmpty(entity.Title) && entity.Title.Length > 150)
+            //{
+            //    result.Add(new ErrorViewModel()
+            //    {
+            //        ErrorCode = Errors.Error931,
+            //        ErrorMessage = string.Format(Messages.FieldMaxLengthExceeded, "عنوان", 150)
+            //    });
+            //}
 
             return result;
         }

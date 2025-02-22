@@ -101,13 +101,24 @@ public class MyMapper : Profile
 
         CreateMap<ProductType,ProductTypeViewModel>();
         CreateMap<Product, ProductViewModel>();
-        CreateMap<ProductViewModel, ProductOccupationViewModel>();
+     
+           
 
 
         CreateMap<ProductCategoryType , ProductCategoryTypeViewModel>();
         CreateMap<ProductLable , ProductLableViewModel>();
         CreateMap<ProductComment , ProductCommentViewModel>();
-        CreateMap<ProductOccupation , ProductOccupationViewModel>();
+
+        CreateMap<ProductOccupation, ProductOccupationViewModel>()
+             .ForMember(x => x.ProductTitle, opt => opt.MapFrom(origin => origin.Product.Title))
+             .ForMember(x => x.OccupationTitle, opt => opt.MapFrom(origin => origin.PersonOccupation.Occupation.Title))
+             .ForMember(x => x.OccupationID, opt => opt.MapFrom(origin => origin.PersonOccupation.OccupationID))
+             .ForMember(x => x.PersonID, opt => opt.MapFrom(origin => origin.PersonOccupation.PersonID))
+             .ForMember(x => x.FullName, opt => opt.MapFrom(origin => origin.PersonOccupation.Person.FullName));
+
+
+
+
         CreateMap<ProductPublisher , ProductPublisherViewModel>();
         CreateMap<ProductPropertyType , ProductPropertyTypeViewModel>();
         CreateMap<ProductGenreType,ProductGenreTypeViewModel>();
