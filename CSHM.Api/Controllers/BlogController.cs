@@ -19,8 +19,17 @@ public class BlogController : ControllerBase
     }
 
     [HttpGet]
+    [Route("api/blog/getAlBylBlogTypeIDAndPublisherID/{publisherID}/{blogTypeID}/{activate?}/{pageNumber?}/{pageSize?}")]
+    public ResultViewModel<BlogViewModel> getAllByBlogTypeIDAndPublisherID(int publisherID,int blogTypeID, bool? activate, int? pageNumber = null, int pageSize = 20, string? filter = null)
+    {
+        var result = _blogService.SelectAllByBlogTypeIDAndPublisherID(publisherID, blogTypeID, activate, filter, pageNumber, pageSize);
+        return result;
+    }
+
+
+    [HttpGet]
     [Route("api/blog/getAllByPublisherID/{publisherID}/{activate?}/{pageNumber?}/{pageSize?}")]
-    public ResultViewModel<BlogViewModel> getAllByMerchantID(int publisherID, bool? activate, int? pageNumber = null, int pageSize = 20, string? filter = null)
+    public ResultViewModel<BlogViewModel> getAllByPublisherID(int publisherID, bool? activate, int? pageNumber = null, int pageSize = 20, string? filter = null)
     {
         var result = _blogService.SelectAllByPublisherID(publisherID, activate, filter, pageNumber, pageSize);
         return result;
