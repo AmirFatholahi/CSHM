@@ -35,7 +35,7 @@ namespace CSHM.Api.Controllers
         {
 
             //var x = _publisherService.GetAll(true,null, 1, 20);
-            var x = _productHandler.SelectAllByPublisher(true, 1, 1, 20);
+           // var x = _productHandler.SelectAllByPublisher(true, 1, 1, 20);
             //var x = _pageService.SelectAllBychangeTypeID(true, 1, 1, 20);
            // var x = _personHandler.SelectAllByOccupation(1);
             ViewBag.Version = PublicExtension.GetVersion();

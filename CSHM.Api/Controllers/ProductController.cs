@@ -1,4 +1,5 @@
-﻿using CSHM.Core.Services;
+﻿using CSHM.Core.Handlers.Interfaces;
+using CSHM.Core.Services;
 using CSHM.Core.Services.Interfaces;
 using CSHM.Presentation.Base;
 using CSHM.Presentation.Product;
@@ -13,9 +14,11 @@ namespace CSHM.Api.Controllers;
 public class ProductController : ControllerBase
 {
     private readonly IProductService _productService;
-    public ProductController(IProductService productService)
+    private readonly IProductHandler _productHandler;
+    public ProductController(IProductService productService,IProductHandler productHandler)
     {
         _productService = productService;
+        _productHandler = productHandler;
     }
 
 
@@ -23,7 +26,7 @@ public class ProductController : ControllerBase
     [Route("api/publisher/getAll/{activate?}/{publisherID}/{pageNumber?}/{pageSize?}")]
     public ResultViewModel<ProductViewModel> getAll(bool? activate,int publisherID, int? pageNumber = null, int pageSize = 20, string? filter = null)
     {
-        var result = _productService.SelectAllByPublisher(activate, publisherID, pageNumber, pageSize);
+        var result = _productHandler.SelectAllByPublisher(activate, publisherID, pageNumber, pageSize);
         return result;
     }
 
