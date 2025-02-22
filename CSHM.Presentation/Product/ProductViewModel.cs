@@ -64,5 +64,5 @@ public class ProductViewModel
 
     public bool IsActive { get; set; }
 
-    public  List<ProductOccupationViewModel> Authors { get; set; }
+    public  List<ProductOccupationViewModel> ProductOccupations { get; set; }
 }
