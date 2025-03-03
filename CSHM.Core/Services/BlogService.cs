@@ -33,6 +33,33 @@ namespace CSHM.Core.Services
             _context = context;
         }
 
+
+        public ResultViewModel<BlogViewModel> SelectAllPinByBlogTypeIDAndPublisherID(int publisherID, int blogTypeID, bool? activate = true, string? filter = null, int? pageNumber = null, int pageSize = 20)
+        {
+            var result = new ResultViewModel<BlogViewModel>();
+            try
+            {
+                IQueryable<Blog> items;
+                Expression<Func<Blog, bool>> condition = x => x.PublisherID == publisherID && x.BlogTypeID == blogTypeID && x.IsPin == true;
+                items = GetAll(activate, condition, pageNumber, pageSize);
+                result.List = MapToViewModel(items);
+
+                result.TotalCount = Count(activate, condition);
+
+                result.Message = result.TotalCount > 0
+                    ? new MessageViewModel { Status = Statuses.Success }
+                    : new MessageViewModel { Status = Statuses.Warning, Message = Messages.NotFoundAnyRecords };
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _log.ExceptionLog(ex, MethodBase.GetCurrentMethod().GetSourceName());
+                result.Message = new MessageViewModel { Status = Statuses.Error, Message = _log.GetExceptionMessage(ex) };
+                return result;
+            }
+        }
+
+
         public ResultViewModel<BlogViewModel> SelectAllByBlogTypeIDAndPublisherID(int publisherID,int blogTypeID, bool? activate = true, string? filter = null, int? pageNumber = null, int pageSize = 20)
         {
             var result = new ResultViewModel<BlogViewModel>();

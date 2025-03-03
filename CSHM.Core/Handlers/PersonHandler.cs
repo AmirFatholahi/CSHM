@@ -42,13 +42,6 @@ namespace CSHM.Core.Handlers
 
             return result;
 
-
-            
-           
-
-            return result;
-
-
         }
     }
 }

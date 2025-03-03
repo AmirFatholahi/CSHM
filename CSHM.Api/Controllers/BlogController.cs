@@ -19,7 +19,16 @@ public class BlogController : ControllerBase
     }
 
     [HttpGet]
-    [Route("api/blog/getAlBylBlogTypeIDAndPublisherID/{publisherID}/{blogTypeID}/{activate?}/{pageNumber?}/{pageSize?}")]
+    [Route("api/blog/getAllPinByBlogTypeIDAndPublisherID/{publisherID}/{blogTypeID}/{activate?}/{pageNumber?}/{pageSize?}")]
+    public ResultViewModel<BlogViewModel> getAllPinByBlogTypeIDAndPublisherID(int publisherID, int blogTypeID, bool? activate, int? pageNumber = null, int pageSize = 20, string? filter = null)
+    {
+        var result = _blogService.SelectAllPinByBlogTypeIDAndPublisherID(publisherID, blogTypeID, activate, filter, pageNumber, pageSize);
+        return result;
+    }
+
+
+    [HttpGet]
+    [Route("api/blog/getAllByBlogTypeIDAndPublisherID/{publisherID}/{blogTypeID}/{activate?}/{pageNumber?}/{pageSize?}")]
     public ResultViewModel<BlogViewModel> getAllByBlogTypeIDAndPublisherID(int publisherID,int blogTypeID, bool? activate, int? pageNumber = null, int pageSize = 20, string? filter = null)
     {
         var result = _blogService.SelectAllByBlogTypeIDAndPublisherID(publisherID, blogTypeID, activate, filter, pageNumber, pageSize);

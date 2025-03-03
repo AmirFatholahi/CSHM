@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace CSHM.Data.Configurations
 {
-    public class ChannelTypeConfiguration : IEntityTypeConfiguration<ChannelType>
+    public class PageTypeConfiguration : IEntityTypeConfiguration<PageType>
     {
-        public void Configure(EntityTypeBuilder<ChannelType> builder)
+        public void Configure(EntityTypeBuilder<PageType> builder)
         {
-            builder.ToTable(name: "ChannelTypes");
+            builder.ToTable(name: "PageTypes");
             builder.HasKey(x => x.ID);
             builder.Property(x => x.Title).IsRequired().HasMaxLength(200);
 

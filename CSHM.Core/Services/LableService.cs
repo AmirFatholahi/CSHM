@@ -7,6 +7,9 @@ using CSHM.Presentation.Base;
 using CSHM.Presentation.Lable;
 using CSHM.Presentation.Resources;
 using CSHM.Widget.Log;
+using CSHM.Widget.Method;
+using System.Linq.Expressions;
+using System.Reflection;
 
 
 namespace CSHM.Core.Services
@@ -24,7 +27,27 @@ namespace CSHM.Core.Services
 
         public override ResultViewModel<LableViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
         {
-            throw new NotImplementedException();
+            var result = new ResultViewModel<LableViewModel>();
+            try
+            {
+                IQueryable<Lable> items;
+                Expression<Func<Lable, bool>> condition = x => (string.IsNullOrWhiteSpace(filter));
+                items = GetAll(activate, condition, pageNumber, pageSize);
+                result.List = MapToViewModel(items);
+
+                result.TotalCount = Count(activate, condition);
+
+                result.Message = result.TotalCount > 0
+                    ? new MessageViewModel { Status = Statuses.Success }
+                    : new MessageViewModel { Status = Statuses.Warning, Message = Messages.NotFoundAnyRecords };
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _log.ExceptionLog(ex, MethodBase.GetCurrentMethod().GetSourceName());
+                result.Message = new MessageViewModel { Status = Statuses.Error, Message = _log.GetExceptionMessage(ex) };
+                return result;
+            }
         }
 
         public List<ErrorViewModel> ValidationForm(LableViewModel entity)

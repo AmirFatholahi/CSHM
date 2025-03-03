@@ -8,9 +8,9 @@ public class PageViewModel
 
     //public string ModuleTitle { get; set; }
 
-    public int ChannelTypeID { get; set; }
+    public int PageTypeID { get; set; }
 
-    public string ChannelTypeTitle { get; set; }
+    public string PageTypeTitle { get; set; }
 
     public int? ParentID { get; set; }
 
@@ -33,5 +33,7 @@ public class PageViewModel
     public bool IsMenu { get; set; }
 
     public bool IsActive { get; set; }
+
+    public List<PageViewModel> Children { get; set; }
 
 }

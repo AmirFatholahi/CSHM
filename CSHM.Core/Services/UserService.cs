@@ -19,7 +19,6 @@ using CSHM.Widget.Email;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using CSHM.Widget.Calendar;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
-using Stimulsoft.Data.Expressions.NCalc;
 using CSHM.Presentation.Base;
 using CSHM.Presentation.Resources;
 

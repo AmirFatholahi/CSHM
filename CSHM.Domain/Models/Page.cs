@@ -10,7 +10,7 @@ public class Page : IEntity
 
     public int? ParentID { get; set; }
 
-    public int ChannelTypeID { get; set; }
+    public int PageTypeID { get; set; }
 
     public string Title { get; set; }
 
@@ -38,7 +38,7 @@ public class Page : IEntity
 
     public virtual Page Parent { get; set; }
 
-    public virtual ChannelType ChannelType { get; set; }
+    public virtual PageType PageType { get; set; }
 
     public virtual ICollection<Page> Children { get; set; }
 

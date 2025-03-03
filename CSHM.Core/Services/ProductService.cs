@@ -12,6 +12,7 @@ using CSHM.Widget.Method;
 using CSHM.Presentation.Resources;
 using System.Linq.Expressions;
 using System.Reflection;
+using CSHM.Presentation.Publish;
 
 
 namespace CSHM.Core.Services
@@ -32,17 +33,24 @@ namespace CSHM.Core.Services
             _context = context;
         }
 
-        public ResultViewModel<ProductViewModel> SelectAllByPublisher(bool? activate, int publisherID, int? pageNumber = null, int pageSize = 20) 
+      
+        public override ResultViewModel<ProductViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
         {
-            ResultViewModel<ProductViewModel> result = new ResultViewModel<ProductViewModel>();
+            var result = new ResultViewModel<ProductViewModel>();
             try
             {
                 IQueryable<Product> items;
-                Expression<Func<Product, bool>> condition = x => x.PublisherID == publisherID;
-                items = GetAll(activate, condition, pageNumber, pageSize);
-                
+                Expression<Func<Product, bool>> condition = x => (string.IsNullOrWhiteSpace(filter) || x.Title.Contains(filter));
+                if (!string.IsNullOrWhiteSpace(filter))
+                {
+                    items = GetAll(activate, condition, pageNumber, pageSize);
+                }
+                else
+                {
+                    items = GetAll(activate, null, pageNumber, pageSize);
+                }
                 result.List = MapToViewModel(items);
-                
+
                 result.TotalCount = Count(activate, condition);
 
                 result.Message = result.TotalCount > 0
@@ -56,11 +64,6 @@ namespace CSHM.Core.Services
                 result.Message = new MessageViewModel { Status = Statuses.Error, Message = _log.GetExceptionMessage(ex) };
                 return result;
             }
-        }
-
-        public override ResultViewModel<ProductViewModel> SelectAll(bool? activate, string filter = null, int? pageNumber = null, int pageSize = 20)
-        {
-            throw new NotImplementedException();
         }
 
         private List<ErrorViewModel> ValidationForm(Product entity)

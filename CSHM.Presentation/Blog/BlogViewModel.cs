@@ -30,5 +30,7 @@ public class BlogViewModel
 
     public int VisitedCount { get; set; }
 
+    public bool IsPin { get; set; }
+
     public bool IsActive { get; set; }
 }

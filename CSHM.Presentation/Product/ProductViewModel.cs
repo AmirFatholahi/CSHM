@@ -62,6 +62,14 @@ public class ProductViewModel
 
     public string Summary { get; set; }
 
+    public bool IsNew { get; set; }
+
+    public bool IsRecommended { get; set; }
+
+    public bool IsSelected { get; set; }
+
+    public bool IsSoon { get; set; }
+
     public bool IsActive { get; set; }
 
     public  List<ProductOccupationViewModel> ProductOccupations { get; set; }

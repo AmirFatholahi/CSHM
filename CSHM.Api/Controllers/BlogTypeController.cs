@@ -17,7 +17,7 @@ public class BlogTypeController : ControllerBase
     }
 
     [HttpGet]
-    [Route("api/blog/getAll/{activate?}/{pageNumber?}/{pageSize?}")]
+    [Route("api/blogType/getAll/{activate?}/{pageNumber?}/{pageSize?}")]
     public ResultViewModel<BlogTypeViewModel> getAll(bool? activate, int? pageNumber = null, int pageSize = 20, string? filter = null)
     {
         var result = _blogTypeService.SelectAll(activate, filter, pageNumber, pageSize);

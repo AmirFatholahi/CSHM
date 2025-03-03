@@ -31,17 +31,40 @@ public class PageService : Repository<Page, PageViewModel>, IPageService
      
 
 
-    public  ResultViewModel<PageViewModel> SelectAllBychangeTypeID(bool? activate, int changeTypeID, int? pageNumber = null, int pageSize = 20)
+    public  ResultViewModel<PageViewModel> SelectAllByPageTypeID(bool? activate, int pageTypeID, int? pageNumber = null, int pageSize = 20)
     {
         var result = new ResultViewModel<PageViewModel>();
+        result.List = new List<PageViewModel>();
         try
         {
             IQueryable<Page> items;
-            Expression<Func<Page, bool>> condition = x => x.ChannelTypeID == changeTypeID;
+            Expression<Func<Page, bool>> condition = x => x.PageTypeID == pageTypeID && (x.ParentID == 0 ||  x.ParentID == null);
 
                 items = GetAll(activate, condition, pageNumber, pageSize);
 
-            result.List = MapToViewModel(items);
+            var pages = MapToViewModel(items);
+
+           // result.List = MapToViewModel(items);
+
+            foreach (var page in pages)
+            {
+                var children = pages.Where(p => p.ParentID == page.ID).ToList();
+                //foreach (var child in children)
+                //{
+                //    page.Children.Add(new PageViewModel
+                //    {
+                //        ID = child.ID,
+                //        Title = child.Title,
+                //        Name = child.Name,
+                //        Path = child.Path,
+                //        ParentID = child.ParentID,
+                //        Children = new List<PageViewModel>() // Initial empty list for further children
+                //    });
+                //}
+
+                result.List.Add(page);
+            }
+
 
             result.TotalCount = Count(activate, condition);
 

@@ -63,6 +63,14 @@ namespace CSHM.Domain
 
         public string Summary { get; set; }
 
+        public bool IsNew { get; set; }
+
+        public bool IsRecommended { get; set; }
+
+        public bool IsSelected { get; set; }
+
+        public bool IsSoon { get; set; }
+
         public bool IsActive { get; set; }
 
         public bool IsDeleted { get; set; }

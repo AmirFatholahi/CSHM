@@ -25,9 +25,9 @@ public class PageConfiguration : IEntityTypeConfiguration<Page>
            .OnDelete(DeleteBehavior.Restrict);
 
 
-        builder.HasOne(x => x.ChannelType)
+        builder.HasOne(x => x.PageType)
          .WithMany()
-         .HasForeignKey(x => x.ChannelTypeID)
+         .HasForeignKey(x => x.PageTypeID)
          .IsRequired()
          .OnDelete(DeleteBehavior.Restrict);
 
