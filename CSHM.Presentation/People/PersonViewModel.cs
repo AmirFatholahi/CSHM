@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSHM.Presentation.Product;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +29,12 @@ namespace CSHM.Presentation.People
 
         public string Biography { get; set; }
 
+        public bool IsPin { get; set; }
+
         public bool IsActive { get; set; }
+
+        public List<PersonOccupationViewModel> PersonOccupations { get; set; }
+
+
     }
 }

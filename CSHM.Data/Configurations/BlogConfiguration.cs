@@ -17,6 +17,7 @@ namespace CSHM.Data.Configurations
 
             builder.HasKey(x => x.ID);
             builder.Property(x => x.Title).IsRequired().HasMaxLength(300);
+            builder.Property(x => x.SubTitle).IsRequired().HasMaxLength(300);
             builder.Property(x => x.Summary).IsRequired(false).HasMaxLength(1000);
             builder.Property(x => x.Content).IsRequired(false).HasMaxLength(2000);
             builder.Property(x => x.MetaDescription).IsRequired(false).HasMaxLength(4000);

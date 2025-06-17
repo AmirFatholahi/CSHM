@@ -151,6 +151,15 @@ namespace CSHM.Core.Services
                 });
             }
 
+            if (string.IsNullOrEmpty(entity.SubTitle) || string.IsNullOrWhiteSpace(entity.SubTitle))
+            {
+                result.Add(new ErrorViewModel()
+                {
+                    ErrorCode = Errors.Error930,
+                    ErrorMessage = string.Format(Messages.FieldIsRequired, "ریز عنوان")
+                });
+            }
+
             if (entity.BlogStatusTypeID <= 0)
             {
                 result.Add(new ErrorViewModel()
@@ -179,12 +188,21 @@ namespace CSHM.Core.Services
             }
 
             //Max Length
-            if (!string.IsNullOrEmpty(entity.Title) && entity.Title.Length > 150)
+            if (!string.IsNullOrEmpty(entity.Title) && entity.Title.Length > 300)
             {
                 result.Add(new ErrorViewModel()
                 {
                     ErrorCode = Errors.Error931,
-                    ErrorMessage = string.Format(Messages.FieldMaxLengthExceeded, "عنوان", 150)
+                    ErrorMessage = string.Format(Messages.FieldMaxLengthExceeded, "عنوان", 300)
+                });
+            }
+
+            if (!string.IsNullOrEmpty(entity.SubTitle) && entity.SubTitle.Length > 300)
+            {
+                result.Add(new ErrorViewModel()
+                {
+                    ErrorCode = Errors.Error931,
+                    ErrorMessage = string.Format(Messages.FieldMaxLengthExceeded, "ریز عنوان", 300)
                 });
             }
 

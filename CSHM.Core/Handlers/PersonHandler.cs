@@ -1,4 +1,5 @@
 ﻿using CSHM.Core.Handlers.Interfaces;
+using CSHM.Core.Services;
 using CSHM.Core.Services.Interfaces;
 using CSHM.Domain;
 using CSHM.Presentation.Base;
@@ -22,6 +23,47 @@ namespace CSHM.Core.Handlers
             _personOccupationService = personOccupationService;
             
         }
+
+        public ResultViewModel<PersonViewModel> SelectAll(bool? activate, int? pageNumber = null, int pageSize = 20)
+        {
+            ResultViewModel<PersonViewModel> result = new ResultViewModel<PersonViewModel>();
+            result.List = new List<PersonViewModel>();
+            var errors = new List<ErrorViewModel>();
+
+            var person = _personService.GetAll(true,null,pageNumber,pageSize).ToList();
+
+            result.List = _personService.MapToViewModel(person);
+
+            foreach (var item in result.List)
+            {
+                var list = _personOccupationService.GetAll(true, x => x.PersonID == item.ID).ToList();
+                item.PersonOccupations = _personOccupationService.MapToViewModel(list);
+            }
+
+            return result;
+
+        }
+
+        public ResultViewModel<PersonViewModel> SelectAllPin(bool? activate, int? pageNumber = null, int pageSize = 20)
+        {
+            ResultViewModel<PersonViewModel> result = new ResultViewModel<PersonViewModel>();
+            result.List = new List<PersonViewModel>();
+            var errors = new List<ErrorViewModel>();
+
+            var person = _personService.GetAll(true, x => x.IsPin == true, pageNumber, pageSize).ToList();
+
+            result.List = _personService.MapToViewModel(person);
+
+            foreach (var item in result.List)
+            {
+                var list = _personOccupationService.GetAll(true, x => x.PersonID == item.ID).ToList();
+                item.PersonOccupations = _personOccupationService.MapToViewModel(list);
+            }
+
+            return result;
+
+        }
+
 
 
         public ResultViewModel<PersonViewModel> SelectAllByOccupation(int occupationID)

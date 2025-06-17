@@ -1,5 +1,9 @@
-﻿namespace CSHM.Core.Services.Interfaces;
+﻿using CSHM.Core.Repositories;
+using CSHM.Domain;
+using CSHM.Presentation.Occupation;
 
-public interface IOccupationService
+namespace CSHM.Core.Services.Interfaces;
+
+public interface IOccupationService : IRepository<Occupation,OccupationViewModel>
 {
 }

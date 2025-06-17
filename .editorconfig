@@ -1,4 +1,9 @@
 ﻿[*.cs]
+dotnet_naming_rule.private_members_should_be_camel_case.severity = error
+dotnet_naming_rule.private_members_should_be_camel_case.symbols  = private_members
+dotnet_naming_rule.private_members_should_be_camel_case.style    = private_camel_case_style
 
-# CS8618: Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-dotnet_diagnostic.CS8618.severity = silent
+dotnet_naming_symbols.private_members.applicable_kinds = field
+dotnet_naming_symbols.private_members.accessibility   = private
+
+dotnet_naming_style.private_camel_case_style.capitalization = camel_case

@@ -23,6 +23,31 @@ public class PersonController : ControllerBase
 
 
     [HttpGet]
+    [Route("api/person/getAll/{activate?}/{pageNumber?}/{pageSize?}")]
+    public ResultViewModel<PersonViewModel> getAll(bool? activate, int? pageNumber = null, int pageSize = 20)
+    {
+        var result = _personHandler.SelectAll(activate, pageNumber, pageSize);
+        return result;
+    }
+
+    [HttpGet]
+    [Route("api/person/getAllPin/{activate?}/{pageNumber?}/{pageSize?}")]
+    public ResultViewModel<PersonViewModel> getAllPin(bool? activate, int? pageNumber = null, int pageSize = 20)
+    {
+        var result = _personHandler.SelectAllPin(activate, pageNumber, pageSize);
+        return result;
+    }
+
+    [HttpGet]
+    [Route("api/person/getBypersonID/{activate?}/{personID}/{pageNumber?}/{pageSize?}")]
+    public PersonViewModel getBypersonID(bool? activate,int personID ,int? pageNumber = null, int pageSize = 20)
+    {
+        var result = _personService.SelectByID(personID);
+        return result;
+    }
+
+
+    [HttpGet]
     [Route("api/person/getAllByOccupation/{occupationID}")]
     public ResultViewModel<PersonViewModel> getAllByOccupation(int occupationID)
     {

@@ -36,8 +36,8 @@ namespace CSHM.Api.Controllers
 
             //var x = _publisherService.GetAll(true,null, 1, 20);
            // var x = _productHandler.SelectAllByPublisher(true, 1, 1, 20);
-            var x = _pageService.SelectAllByPageTypeID(true, 3, 1, 20);
-           // var x = _personHandler.SelectAllByOccupation(1);
+           // var x = _pageService.SelectAllByPageTypeID(true, 3, 1, 20);
+            var x = _personHandler.SelectAll(true,1,20);
             ViewBag.Version = PublicExtension.GetVersion();
             ViewBag.BaseUrl = _baseURL;
             return View();

@@ -55,34 +55,132 @@ public static class PublicExtension
     }
 
 
+    //public static string GetVersion()
+    //{
+    //    Assembly assembly = Assembly.GetExecutingAssembly();
+    //    FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
+    //    string productVersion = fileVersionInfo.ProductVersion;
+    //    //var majorVersion = productVersion.Substring(0, productVersion.IndexOf(".", StringComparison.Ordinal));
+    //    var majorVersion = GetConfigValue<string>("Version:AppVersion");
+    //    string date = productVersion.Substring(productVersion.IndexOf("pre", StringComparison.Ordinal) + 3);
+    //    if (date == "")
+    //        return "Debuging Mode";
+    //    var year = Convert.ToInt32(date.Substring(0, 4));
+    //    var month = Convert.ToInt32(date.Substring(4, 2));
+    //    var day = Convert.ToInt32(date.Substring(6, 2));
+    //    var hour = Convert.ToInt32(date.Substring(8, 2));
+    //    var minute = Convert.ToInt32(date.Substring(10, 2));
+
+
+    //    if (year < 1500)
+    //    {
+    //        return $"{majorVersion}.{year.ToString().Substring(3, 1)}{month}{day}{hour}{minute} - ({year}/{month}/{day})";
+    //    }
+    //    else
+    //    {
+    //        var dt = new DateTime(year, month, day, hour, minute, 0);
+    //        var jalaliDate = dt.ToJalaliDate();
+    //        return $"{majorVersion}.{jalaliDate.Replace("/", "").Substring(3, jalaliDate.Length - 5)}{hour}{minute} - ({jalaliDate})";
+    //    }
+    //}
+
+    //public static string GetVersion()
+    //{
+    //    try
+    //    {
+    //        Assembly assembly = Assembly.GetExecutingAssembly();
+    //        FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
+    //        string productVersion = fileVersionInfo.ProductVersion ?? string.Empty;
+
+    //        string majorVersion = GetConfigValue<string>("Version:AppVersion") ?? "UnknownVersion";
+    //        int preIndex = productVersion.IndexOf("pre", StringComparison.Ordinal);
+
+    //        if (preIndex == -1 || preIndex + 3 >= productVersion.Length)
+    //        {
+    //            return "Debugging Mode";
+    //        }
+
+    //        string date = productVersion.Substring(preIndex + 3);
+
+    //        if (string.IsNullOrEmpty(date) || date.Length < 12 || !date.All(char.IsDigit))
+    //        {
+    //            return "Debugging Mode";
+    //        }
+
+    //        int year = int.Parse(date.Substring(0, 4));
+    //        int month = int.Parse(date.Substring(4, 2));
+    //        int day = int.Parse(date.Substring(6, 2));
+    //        int hour = int.Parse(date.Substring(8, 2));
+    //        int minute = int.Parse(date.Substring(10, 2));
+
+    //        if (year < 1500)
+    //        {
+    //            return $"{majorVersion}.{year % 100:D2}{month:D2}{day:D2}.{hour:D2}{minute:D2}";
+    //        }
+
+    //        DateTime dateTime = new DateTime(year, month, day, hour, minute, 0);
+    //        string jalaliDate = dateTime.ToJalaliDate(); // Assuming this is your extension method
+
+    //        return $"{majorVersion}.{jalaliDate.Replace("/", "").Substring(3)}{hour:D2}{minute:D2} - ({jalaliDate})";
+    //    }
+    //    catch
+    //    {
+    //        return "Debugging Mode";
+    //    }
+    //}
+
     public static string GetVersion()
     {
         Assembly assembly = Assembly.GetExecutingAssembly();
         FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
         string productVersion = fileVersionInfo.ProductVersion;
-        //var majorVersion = productVersion.Substring(0, productVersion.IndexOf(".", StringComparison.Ordinal));
+
         var majorVersion = GetConfigValue<string>("Version:AppVersion");
-        string date = productVersion.Substring(productVersion.IndexOf("pre", StringComparison.Ordinal) + 3);
-        if (date == "")
-            return "Debuging Mode";
-        var year = Convert.ToInt32(date.Substring(0, 4));
-        var month = Convert.ToInt32(date.Substring(4, 2));
-        var day = Convert.ToInt32(date.Substring(6, 2));
-        var hour = Convert.ToInt32(date.Substring(8, 2));
-        var minute = Convert.ToInt32(date.Substring(10, 2));
 
+        // Try to extract the part after "pre" if available
+        int preIndex = productVersion.IndexOf("pre", StringComparison.OrdinalIgnoreCase);
+        string versionSuffix = preIndex >= 0 ? productVersion.Substring(preIndex + 3) : null;
 
-        if (year < 1500)
+        // Debugging Mode: when suffix is null or not numeric
+        if (string.IsNullOrWhiteSpace(versionSuffix) || !char.IsDigit(versionSuffix[0]))
         {
-            return $"{majorVersion}.{year.ToString().Substring(3, 1)}{month}{day}{hour}{minute} - ({year}/{month}/{day})";
+            return "Debugging Mode";
         }
-        else
+
+        try
         {
-            var dt = new DateTime(year, month, day, hour, minute, 0);
-            var jalaliDate = dt.ToJalaliDate();
-            return $"{majorVersion}.{jalaliDate.Replace("/", "").Substring(3, jalaliDate.Length - 5)}{hour}{minute} - ({jalaliDate})";
+            // Expecting a format like "202504111330" (12 characters)
+            if (versionSuffix.Length < 12)
+            {
+                return "Invalid Version Format";
+            }
+
+            var year = int.Parse(versionSuffix.Substring(0, 4));
+            var month = int.Parse(versionSuffix.Substring(4, 2));
+            var day = int.Parse(versionSuffix.Substring(6, 2));
+            var hour = int.Parse(versionSuffix.Substring(8, 2));
+            var minute = int.Parse(versionSuffix.Substring(10, 2));
+
+            if (year < 1500)
+            {
+                return $"{majorVersion}.{year % 100:D2}{month:D2}{day:D2}.{hour:D2}{minute:D2}";
+            }
+            else
+            {
+                var dateTime = new DateTime(year, month, day, hour, minute, 0);
+                var jalaliDate = dateTime.ToJalaliDate(); // Your extension method
+                string formattedJalali = jalaliDate.Replace("/", "").Substring(3); // Remove year part
+                return $"{majorVersion}.{formattedJalali}{hour:D2}{minute:D2} - ({jalaliDate})";
+            }
+        }
+        catch
+        {
+            return "Invalid Version Format";
         }
     }
+
+
+
 
     public static T GetConfigValue<T>(string configName)
     {
